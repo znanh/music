@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <style>
+    body,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    code,
+    legend,
+    button form,
+    fieldset,
+    input,
+    textarea,
+    p,
+    blockquote,
+    th,
+    td {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: #F5F5F5;
+    }
+
+    .tbar {
+      width: 100%;
+      z-index: 99;
+      zoom: 1;
+    }
+
+    .tbar-top {
+      position: relative;
+      z-index: 1000;
+      height: 70px;
+      box-sizing: border-box;
+      background: #fdfdfd;
+      border-bottom: 1px solid #000;
+    }
+
+    .tbar-top .top-wrap {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    .top-cb:after {
+      clear: both;
+      content: '.';
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+
+    .tbar-top .logo {
+      float: left;
+      width: 176px;
+      height: 69px;
+      background-position: 0 0;
+    }
+
+    .tbar-top .logo a {
+      float: left;
+      width: 157px;
+      height: 100%;
+      padding-right: 20px;
+      text-indent: -9999px;
+    }
+
+    [hidefocus] {
+      outline: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .m-nav {
+      float: left;
+      border-right: none;
+      list-style: none;
+      margin: 0;
+    }
+
+    .m-nav li {
+      float: left;
+      height: 68px;
+      font-size: 14px;
+      position: relative;
+      background-position: right -300px;
+      color: rgb(0, 0, 0);
+      border-bottom-color: transparent;
+      line-height: 68px;
+      margin: 0;
+      border-bottom: 2px solid transparent;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .menuitem:hover {
+      /* background-color: #000000; */
+      color:#B72712;
+      cursor: pointer;
+      /*hover变小手*/
+    }
+
+    .isactived {
+      /* background-color: #000000 !important; */
+      color: #B72712 !important;
+      border-bottom-color: #B72712 !important;
+    }
+
+    .tbar-tophead {
+      float: right;
+      height: 45px;
+      margin: 19px 0 0 20px;
+      padding: 0 22px 0 0;
+      background-position: right -47px;
+      background-image: none;
+    }
+
+    .tbar-tophead .link,
+    .tbar-tophead .link:hover {
+      display: block;
+      width: 28px;
+      margin-top: 7px;
+      color: #787878;
+      font-size: 12px;
+    }
+
+    .tbar-tophead:hover .link {
+      color: #999;
+    }
+
+    .mbar-srch,
+    .mbar-srch .srchbg {
+      float: right;
+      width: 158px;
+      height: 32px;
+    }
+    .mbar-srch .srchbg {
+      border: solid 2px #c4c7ce;
+    }
+
+    .mbar-srch .srchbg {
+      margin-top: 19px;
+      background-position: 0 -99px;
+      background-color: #fff;
+      border-radius: 32px;
+    }
+
+    .mbar-srch,
+    .mbar-srch .srchbg {
+      float: right;
+      width: 158px;
+      height: 32px;
+    }
+
+    .mbar-srch .parent {
+      display: block;
+      position: relative;
+      margin: 8px 0 0 30px;
+    }
+
+    .mbar-srch .parent input {
+      color: #333;
+      line-height: 16px;
+      opacity: 1;
+    }
+
+    .mbar-srch .parent input {
+      position: relative;
+      width: 95%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    img,
+    .txt {
+      border: 0;
+    }
+
+    input {
+      outline-color: transparent;
+    }
+
+    .mbar-srch .parent label {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 90%;
+      color: #9b9b9b;
+      cursor: text;
+      font-size: 12px;
+      font-weight: 100
+    }
+
+    .mbar-srch .parent input {
+      font-size: 12px;
+    }
+
+    .mbar-srch .u-showoff {
+      position: absolute;
+      top: 108px;
+      left: 16px;
+      width: 180px;
+      height: 40px;
+      line-height: 40px;
+      background-color: #fe5555;
+      color: #fff;
+      text-align: center;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    .f-hide,
+    .js-hide {
+      display: none !important;
+    }
+
+    .none {
+      display: none !important;
+    }
+
+    .mbar-subnav {
+      z-index: 90;
+      height: 35px;
+      box-sizing: border-box;
+      background-color: #c4c7ce;
+    }
+
+    .mbar-subnav .top-wrap {
+      position: relative;
+      width: 900px;
+      height: 34px;
+      margin: 0 auto;
+    }
+
+    .fbar-pr {
+      position: relative;
+      zoom: 1;
+    }
+
+    .mbar-subnav .anav {
+      position: absolute;
+      float: left;
+      padding-left: 180px;
+    }
+
+    .mbar-subnav .anav li,
+    .mbar-subnav .anav a {
+      float: left;
+      height: 34px;
+      text-align: center;
+    }
+
+    li,
+    s {
+      list-style: none;
+    }
+
+    .mbar-subnav .anav a:hover,
+    .mbar-subnav .anav a.anavact {
+      color: #000;
+      text-decoration: none;
+    }
+
+    .mbar-subnav .anav li,
+    .mbar-subnav .anav a {
+      float: left;
+      height: 34px;
+      text-align: center;
+    }
+
+    [hidefocus] {
+      outline: none;
+    }
+
+    a,
+    a *,
+    .f-hand,
+    .f-hand * {
+      cursor: pointer;
+    }
+
+    .mbar-subnav .anav a:hover em,
+    .mbar-subnav .anav a.anavact em {
+      background: #fdfdfd;
+    }
+
+    .mbar-subnav .anav a em {
+      display: inline-block;
+      height: 20px;
+      padding: 0 13px;
+      margin: 7px 17px 0 0;
+      border-radius: 20px;
+      line-height: 21px;
+    }
+
+    em,
+    i {
+      font-style: normal;
+      text-align: left;
+      font-size: inherit;
+    }
+
+    /* 内容区 */
+    .container {
+      width: 980px;
+      min-height: 700px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid #d3d3d3;
+      border-width: 0 1px;
+    }
+
+    .container .sel {
+      padding: 40px;
+    }
+
+    .container .sel .nav {
+      margin: 40px 0 0;
+    }
+
+    .sel .n-srch {
+      width: 420px;
+      height: 40px;
+      margin: 0px auto;
+      background-position: 0px 0px;
+      z-index: 10;
+    }
+
+    .container .sel .nav .selitem {
+      padding: 0 20px;
+      height: 40px;
+      box-sizing: border-box;
+      line-height: 40;
+      display: inline-block;
+      list-style: none;
+      position: relative;
+    }
+
+    .nav li {
+      width: 33.3%;
+    }
+
+    .nav li a {
+      background-color: #eee;
+    }
+
+    .w50 {
+      width: 50px;
+    }
+
+    .w80 {
+      width: 80px;
+    }
+
+    .w250 {
+      width: 250px;
+    }
+
+    .w350 {
+      width: 350px;
+    }
+
+    .table td,
+    .table .w250 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .table {
+      table-layout: fixed;
+    }
+
+    .thumbnail {
+      margin: 0;
+    }
+
+    .artistsView img {
+      width: 112px;
+      height: 92px;
+    }
+
+
+    .artistsView p:hover span,
+    .albumsView p:hover span {
+      text-decoration: underline
+    }
+
+    .artistsView p,
+    .albumsView p {
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /* color: #00f */
+    }
+
+    .albumsView p span,
+    .artistsView p span {
+      cursor: pointer;
+    }
+
+    .albumsView .thumbnail+p+p {
+      font-size: 12px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .sel .col-md-2 {
+      margin-top: 10px;
+      padding-left: 0;
+    }
+
+    /* 专辑 */
+    .sel .thumbnail {
+      border: none;
+    }
+
+    .cover_out:hover img {
+      transform: scale(1.07);
+      transition: all .75s cubic-bezier(0, 1, .75, 1);
+    }
+
+    .cover_out:hover .cover_play {
+      display: block;
+    }
+
+    .cover_out {
+      width: 120px !important;
+      height: 120px !important;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cover_out img {
+      width: 120px !important;
+      height: 120px !important;
+      transform: scale(1);
+      transition: transform .75s;
+    }
+
+    .cover_out .cover_play {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 120px;
+      background: rgba(0, 0, 0, .3);
+    }
+
+    /* 歌手 */
+    .cover-out:hover img {
+      transform: scale(1.07);
+      transition: all .75s cubic-bezier(0, 1, .75, 1);
+    }
+
+    .cover-out:hover .cover-play {
+      display: block;
+    }
+
+    .cover-out {
+      width: 112px !important;
+      height: 92px !important;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .cover-out img {
+      width: 120px !important;
+      height: 92px !important;
+    }
+
+    .cover-out .cover-play {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 112px;
+      height: 92px;
+      background: rgba(0, 0, 0, .3);
+    }
+    /* 列表下的span hover 出现小手 */
+    tbody span {
+      cursor: pointer;
+    }
+    tbody span:hover {
+      text-decoration: underline;
+    }
+
+    .anav em {
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <div class="tbar">
+    <div class="tbar-top">
+      <div class="top-wrap top-cb ">
+        <h1 class="logo"><a hidefocus="true" href="#"></a></h1>
+        <ul class='m-nav'>
+          <li class='menuitem isactived home'>音乐首页</li>
+          <!-- <li class='menuitem'>我的音乐</li>
+          <li class='menuitem'>占位</li>
+          <li class='menuitem'>占位</li> -->
+        </ul>
+        <div class="tbar-tophead">
+          <a hidefocus="true" href="#" class="link" data-action="login">登录</a>
+        </div>
+        <div class="mbar-srch fbar-pr">
+          <div class="srchbg">
+            <span class="parent">
+              <input type="text" name="srch" id="srch" class="txt j-flag" value="" style="opacity: 1;">
+              <label class="ph">音乐/歌手/专辑/歌单</label>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mbar-subnav">
+      <div class="top-wrap fbar-pr">
+        <ul class="anav">
+          <li>
+            <a hidefocus="true" data-module="recommend" href="#" class="">
+              <em>推荐</em>
+            </a>
+          </li>
+          <li>
+            <a hidefocus="true" data-module="toplist" href="#" class="">
+              <em>排行榜</em>
+            </a>
+          </li>
+          <li>
+            <a hidefocus="true" data-module="playlist" href="#" class="">
+              <em>歌单</em>
+            </a>
+          </li>
+          <li>
+            <a hidefocus="true" data-module="artist" href="#" class="">
+              <em>歌手</em>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 内容区 -->
+  <div class="container">
+    <div class="sel none">
+      <div class="n-srch fbar-pr">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+          </span>
+        </div>
+      </div>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active songs"><a href="#">单曲</a></li>
+        <li role="presentation" class="artists"><a href="#">歌手</a></li>
+        <li role="presentation" class="album"><a href="#">专辑</a></li>
+        <!-- <li role="presentation"><a href="#">占位</a></li>
+        <li role="presentation"><a href="#">占位</a></li>
+        <li role="presentation"><a href="#">占位</a></li>
+        <li role="presentation"><a href="#">占位</a></li>
+        <li role="presentation"><a href="#">占位</a></li> -->
+      </ul>
+      <table class="table table-hover table-nowrap">
+        <thead>
+          <tr>
+            <th class="w50">序号</th>
+            <th class='w350'>歌曲名</th>
+            <th>歌手</th>
+            <th class="w250">专辑</th>
+            <th class="w80">时长</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <div class="artistsView"></div>
+      <div class="albumsView"></div>
+    </div>
+  </div>
+  <script src="../../js/jquery.min.js"></script>
+<script src="../../js/axios.min.js"></script>
+  <script type="text/javascript" src="../../js/getUrlParam.js"></script>
+  <script>
+    var aul = document.querySelector('.m-nav')
+    var olde = document.querySelector('.menuitem')
+    var srch = document.querySelector('.mbar-srch')
+    var txt = document.querySelector('.mbar-srch .txt')
+    var ph = document.querySelector('.mbar-srch .ph')
+    var anav = document.querySelector('.anav')
+    var anavact = null
+    var nav = document.querySelector('.nav')
+    var navActive = document.querySelector('.nav .active')
+    var navSongs = document.querySelector('.nav .songs')
+    var _table = document.querySelector('.table')
+    var tbody = document.querySelector('.table tbody')
+    var sel = document.querySelector('.sel')
+    var ninput = document.querySelector('.input-group input')
+    var nbutton = document.querySelector('.input-group button')
+    var nspan = document.querySelector('.input-group span')
+    var artistsView = document.querySelector('.artistsView')
+    var albumsView = document.querySelector('.albumsView')
+    var home = document.querySelector('.home')
+
+    var textvalue = ''
+    var type = 1
+    if (UrlParm.parm("textvalue")) {
+      textvalue = UrlParm.parm("textvalue");
+    }
+    home.addEventListener('click', function () {
+      location.href = `pcindex.html`
+    })
+    aul.addEventListener('click', function (e) {
+      var target = e.target;
+      while (target !== aul) {
+
+        if (target.nodeName.toLowerCase() === 'li') {
+          if (olde) {
+            olde.classList.remove('isactived')
+          }
+          target.classList.add('isactived')
+          olde = target
+          break
+        }
+        target = target.parentNode
+      }
+    })
+    srch.addEventListener('click', function (e) {
+      document.onclick = null
+      txt.focus()
+      ph.classList.add('none')
+    })
+    txt.addEventListener('keyup', function (e) {
+      if (e.keyCode == 13) {
+        if (txt.value !== textvalue && txt.value !== '') {
+          txt.blur();
+          type=1
+          navActive.classList.remove('active')
+          navSongs.classList.add('active')
+          navActive = navSongs
+          tbody.innerHTML = ''
+            ; (async function main() {
+              const res = await axios({
+                url: `http:localhost:3000/search?keywords=${txt.value}&type=1`,
+                withCredentials: true, //关键
+                method: 'post',
+              })
+              
+              let data = res.data.result.songs
+              let num = 0
+              for (let x of data) {
+                num++
+                let seconds = Math.floor(x.duration / 1000)
+                let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+                seconds -= 60 * min;
+                let sec = seconds >= 10 ? seconds : '0' + seconds;
+                str = ''
+                name = ''
+                for (let y of x.artists) {
+                  name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+                }
+                name = name.substring(0, name.length - 1)
+                str = `<tr>
+                        <th scope="row">${num}</th>
+                        <td ><span class="songname" data-id="${x.id}">${x.name}</span></td>
+                        <td >${name}</td>
+                        <td ><span class="albumname" data-id="${x.album.id}">《 ${x.album.name}》</span></td>
+                        <td>${min} : ${sec}</td>
+                     </tr>`
+                tbody.innerHTML += str
+              }
+              if (sel.getAttribute('class').includes('none')) {
+                sel.classList.remove('none')
+              }
+            }
+            )()
+          if (_table.getAttribute('class').includes('none')) {
+            _table.classList.remove('none')
+          }
+          textvalue = txt.value
+          ninput.value = textvalue
+        }
+      }
+    })
+    document.addEventListener("mousedown", function (e) {
+      if (e.target.nodeName.toLowerCase() !== "input" && txt.value === '') {
+        ph.classList.remove('none')
+      }
+    }, false);
+
+    anav.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== anav) {
+        if (target.nodeName.toLowerCase() === 'a') {
+          if(anavact){
+          anavact.classList.remove('anavact')
+          }
+          target.classList.add('anavact')
+          anavact = target
+          if(target.dataset.module === 'playlist'){
+            location.href = `pcplaylist.html?tag=全部`
+          }else if(target.dataset.module === 'recommend'){
+            location.href = `pcindex.html`
+          }else if(target.dataset.module === 'toplist'){
+            location.href = `pcrank.html`
+          }else if(target.dataset.module === 'artist'){
+            location.href = `pcartistslist.html`
+          }
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    nav.addEventListener('click', function (e) {
+      var target = e.target;
+      while (target !== nav) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          navActive.classList.remove('active')
+          target.classList.add('active')
+          navActive = target
+          /* var regsongs = /songs/
+          var regartists = /artists/
+          var regalbum = /album/ */
+          // regsongs.test(target.className)
+          if (target.getAttribute('class').includes("songs")) {
+            if (type !== 1) {
+              type = 1
+              tbody.innerHTML = ''
+              albumsView.innerHTML = ''
+              artistsView.innerHTML = ''
+                ; (async function main() {
+                  const res = await axios({
+                    url: `http:localhost:3000/search?keywords=${textvalue}&type=1`,
+                    withCredentials: true, //关键
+                    method: 'post',
+                  })
+                  let data = res.data.result.songs
+                  let num = 0
+                  for (let x of data) {
+                    num++
+                    let seconds = Math.floor(x.duration / 1000)
+                    let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+                    seconds -= 60 * min;
+                    let sec = seconds >= 10 ? seconds : '0' + seconds;
+                    str = ''
+                    name = ''
+                    for (let y of x.artists) {
+                      name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+                    }
+                    name = name.substring(0, name.length - 1)
+                    str = `<tr>
+                        <th scope="row">${num}</th>
+                        <td ><span class="songname" data-id="${x.id}">${x.name}</span></td>
+                        <td >${name}</td>
+                        <td ><span class="albumname" data-id="${x.album.id}">《 ${x.album.name}》</span></td>
+                        <td>${min} : ${sec}</td>
+                     </tr>`
+                    tbody.innerHTML += str
+                  }
+                  if (_table.getAttribute('class').includes('none')) {
+                    _table.classList.remove('none')
+                  }
+                }
+                )()
+            }
+          } else if (target.getAttribute('class').includes("artists")) {
+            if (type !== 100) {
+              type = 100
+              albumsView.innerHTML = ''
+              _table.classList.add('none')
+                ; (async function main() {
+                  const res = await axios({
+                    url: `http:localhost:3000/search?keywords=${textvalue}&type=100`,
+                    withCredentials: true, //关键
+                    method: 'post',
+                  })
+                  artistsView.innerHTML = ''
+                  let data = res.data.result.artists
+                  for (let x of data) {
+                    str = ''
+                    str = `<div class="col-md-2">
+                              <div class='cover-out' data-id="${x.id}">
+                                <a href="#" class="thumbnail">
+                                  <img src="${x.picUrl}?param=104y92" alt="...">
+                                </a>
+                                <div class='cover-play'></div>
+                              </div>
+                                <p>
+                                  <span data-id="${x.id}">${x.name}</span>
+                                </p>
+                           </div>`
+                    artistsView.innerHTML += str
+                  }
+
+
+                }
+                )()
+            }
+          } else if (target.getAttribute('class').includes("album")) {
+            if (type !== 10) {
+              type = 10
+              _table.classList.add('none')
+              artistsView.innerHTML = ''
+                ; (async function main() {
+                  const res = await axios({
+                    url: `http:localhost:3000/search?keywords=${textvalue}&type=10`,
+                    withCredentials: true, //关键
+                    method: 'post',
+                  })
+                  albumsView.innerHTML = ''
+                  let data = res.data.result.albums
+                  for (let x of data) {
+                    str = ''
+                    str = `<div class="col-md-2">
+                              <div class='cover_out' >
+                                  <a href="#" class="thumbnail">
+                                    <img src="${x.picUrl}?param=112y120" alt="...">
+                                  </a>
+                                  <div class='cover_play' data-id="${x.id}"></div>
+                              </div>
+                                  <p>
+                                    <span class="alname" data-id="${x.id}">${x.name}</span>
+                                    </p>
+                                  <p>
+                                    <span class="al-arname" data-id="${x.artist.id}">${x.artist.name}</span>
+                                    </p>
+                        </div>`
+                    albumsView.innerHTML += str
+                  }
+                }
+                )()
+            }
+          }
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    ninput.addEventListener('keyup', function (e) {
+      if (e.keyCode == 13) {
+        if (ninput.value !== textvalue && ninput.value !== '') {
+          ninput.blur();
+          ; (async function main() {
+            const res = await axios({
+              url: `http:localhost:3000/search?keywords=${ninput.value}&type=${type}`,
+              withCredentials: true, //关键
+              method: 'post',
+            })
+            if (type == 1) {
+              tbody.innerHTML = ''
+              let data = res.data.result.songs
+              let num = 0
+              for (let x of data) {
+                num++
+                let seconds = Math.floor(x.duration / 1000)
+                let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+                seconds -= 60 * min;
+                let sec = seconds >= 10 ? seconds : '0' + seconds;
+                str = ''
+                name = ''
+                for (let y of x.artists) {
+                  name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+                }
+                name = name.substring(0, name.length - 1)
+                str = `<tr>
+                        <th scope="row">${num}</th>
+                        <td ><span class="songname" data-id="${x.id}">${x.name}</span></td>
+                        <td >${name}</td>
+                        <td ><span class="albumname" data-id="${x.album.id}">《 ${x.album.name}》</span></td>
+                        <td>${min} : ${sec}</td>
+                     </tr>`
+                tbody.innerHTML += str
+              }
+              if (_table.getAttribute('class').includes('none')) {
+                _table.classList.remove('none')
+              }
+            } else if (type == 100) {
+              artistsView.innerHTML = ''
+              let data = res.data.result.artists
+              for (let x of data) {
+                str = ''
+                str = `<div class="col-md-2">
+                              <div class='cover-out' data-id="${x.id}">
+                                <a href="#" class="thumbnail">
+                                  <img src="${x.picUrl}?param=104y92" alt="...">
+                                </a>
+                                <div class='cover-play'></div>
+                              </div>
+                                <p>
+                                  <span data-id="${x.id}">${x.name}</span>
+                                </p>
+                           </div>`
+                artistsView.innerHTML += str
+              }
+            } else if (type == 10) {
+              albumsView.innerHTML = ''
+              let data = res.data.result.albums
+              for (let x of data) {
+                str = ''
+                str = `<div class="col-md-2">
+                              <div class='cover_out' >
+                                  <a href="#" class="thumbnail">
+                                    <img src="${x.picUrl}?param=112y120"" alt="...">
+                                  </a>
+                                  <div class='cover_play' data-id="${x.id}"></div>
+                              </div>
+                                  <p>
+                                    <span class="alname" data-id="${x.id}">${x.name}</span>
+                                    </p>
+                                  <p>
+                                    <span class="al-arname" data-id="${x.artist.id}">${x.artist.name}</span>
+                                    </p>
+                        </div>`
+                albumsView.innerHTML += str
+              }
+            }
+          }
+          )()
+          textvalue = ninput.value
+        }
+      }
+    })
+    nbutton.addEventListener('click', function () {
+      if (ninput.value !== textvalue && ninput.value !== '') {
+        ninput.blur();
+        ; (async function main() {
+          const res = await axios({
+            url: `http:localhost:3000/search?keywords=${ninput.value}&type=${type}`,
+            withCredentials: true, //关键
+            method: 'post',
+          })
+          if (type == 1) {
+            tbody.innerHTML = ''
+            let data = res.data.result.songs
+            let num = 0
+            for (let x of data) {
+              num++
+              let seconds = Math.floor(x.duration / 1000)
+              let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+              seconds -= 60 * min;
+              let sec = seconds >= 10 ? seconds : '0' + seconds;
+              str = ''
+              name = ''
+              for (let y of x.artists) {
+                name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+              }
+              name = name.substring(0, name.length - 1)
+              str = `<tr>
+                        <th scope="row">${num}</th>
+                        <td ><span class="songname" data-id="${x.id}">${x.name}</span></td>
+                        <td >${name}</td>
+                        <td ><span class="albumname" data-id="${x.album.id}">《 ${x.album.name}》</span></td>
+                        <td>${min} : ${sec}</td>
+                     </tr>`
+              tbody.innerHTML += str
+            }
+            if (_table.getAttribute('class').includes('none')) {
+              _table.classList.remove('none')
+            }
+          } else if (type == 100) {
+            artistsView.innerHTML = ''
+            let data = res.data.result.artists
+            for (let x of data) {
+              str = ''
+              str = `<div class="col-md-2">
+                              <div class='cover-out' data-id="${x.id}">
+                                <a href="#" class="thumbnail">
+                                  <img src="${x.picUrl}?param=104y92" alt="...">
+                                </a>
+                                <div class='cover-play'></div>
+                              </div>
+                                <p>
+                                  <span data-id="${x.id}">${x.name}</span>
+                                </p>
+                           </div>`
+              artistsView.innerHTML += str
+            }
+          } else if (type == 10) {
+            albumsView.innerHTML = ''
+            let data = res.data.result.albums
+            for (let x of data) {
+              str = ''
+              str = `<div class="col-md-2">
+                              <div class='cover_out' >
+                                  <a href="#" class="thumbnail">
+                                    <img src="${x.picUrl}?param=112y120"" alt="...">
+                                  </a>
+                                  <div class='cover_play' data-id="${x.id}"></div>
+                              </div>
+                                  <p>
+                                    <span class="alname" data-id="${x.id}">${x.name}</span>
+                                    </p>
+                                  <p>
+                                    <span class="al-arname" data-id="${x.artist.id}">${x.artist.name}</span>
+                                    </p>
+                        </div>`
+              albumsView.innerHTML += str
+            }
+          }
+        }
+        )()
+        textvalue = ninput.value
+      }
+    })
+    nspan.addEventListener('click', function () {
+      if (ninput.value !== textvalue && ninput.value !== '') {
+        ninput.blur();
+        ; (async function main() {
+          const res = await axios({
+            url: `http:localhost:3000/search?keywords=${ninput.value}&type=${type}`,
+            withCredentials: true, //关键
+            method: 'post',
+          })
+          if (type == 1) {
+            tbody.innerHTML = ''
+            let data = res.data.result.songs
+            let num = 0
+            for (let x of data) {
+              num++
+              let seconds = Math.floor(x.duration / 1000)
+              let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+              seconds -= 60 * min;
+              let sec = seconds >= 10 ? seconds : '0' + seconds;
+              str = ''
+              name = ''
+              for (let y of x.artists) {
+                name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+              }
+              name = name.substring(0, name.length - 1)
+              str = `<tr>
+                        <th scope="row">${num}</th>
+                        <td ><span class="songname" data-id="${x.id}">${x.name}</span></td>
+                        <td >${name}</td>
+                        <td ><span class="albumname" data-id="${x.album.id}">《 ${x.album.name}》</span></td>
+                        <td>${min} : ${sec}</td>
+                     </tr>`
+              tbody.innerHTML += str
+            }
+            if (_table.getAttribute('class').includes('none')) {
+              _table.classList.remove('none')
+            }
+          } else if (type == 100) {
+            artistsView.innerHTML = ''
+            let data = res.data.result.artists
+            for (let x of data) {
+              str = ''
+              str = `<div class="col-md-2">
+                              <div class='cover-out' data-id="${x.id}">
+                                <a href="#" class="thumbnail">
+                                  <img src="${x.picUrl}?param=104y92" alt="...">
+                                </a>
+                                <div class='cover-play'></div>
+                              </div>
+                                <p>
+                                  <span data-id="${x.id}">${x.name}</span>
+                                </p>
+                           </div>`
+              artistsView.innerHTML += str
+            }
+          } else if (type == 10) {
+            albumsView.innerHTML = ''
+            let data = res.data.result.albums
+            for (let x of data) {
+              str = ''
+              str = `<div class="col-md-2">
+                              <div class='cover_out' >
+                                  <a href="#" class="thumbnail">
+                                    <img src="${x.picUrl}?param=112y120"" alt="...">
+                                  </a>
+                                  <div class='cover_play' data-id="${x.id}"></div>
+                              </div>
+                                  <p>
+                                    <span class="alname" data-id="${x.id}">${x.name}</span>
+                                    </p>
+                                  <p>
+                                    <span class="al-arname" data-id="${x.artist.id}">${x.artist.name}</span>
+                                    </p>
+                        </div>`
+              albumsView.innerHTML += str
+            }
+          }
+        }
+        )()
+        textvalue = ninput.value
+      }
+    })
+    if (textvalue) {
+      ; (async function main() {
+        ph.classList.add('none')
+        const res = await axios({
+          url: `http:localhost:3000/search?keywords=${textvalue}&type=1`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+        let data = res.data.result.songs
+        let num = 0
+        for (let x of data) {
+          num++
+          let seconds = Math.floor(x.duration / 1000)
+          let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+          seconds -= 60 * min;
+          let sec = seconds >= 10 ? seconds : '0' + seconds;
+          str = ''
+          name = ''
+          for (let y of x.artists) {
+            name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+          }
+          name = name.substring(0, name.length - 1)
+          str = `<tr>
+                        <th scope="row">${num}</th>
+                        <td ><span class="songname" data-id="${x.id}">${x.name}</span></td>
+                        <td >${name}</td>
+                        <td ><span class="albumname" data-id="${x.album.id}">《 ${x.album.name}》</span></td>
+                        <td>${min} : ${sec}</td>
+                     </tr>`
+          tbody.innerHTML += str
+        }
+        if (sel.getAttribute('class').includes('none')) {
+          sel.classList.remove('none')
+        }
+      }
+      )()
+    }
+    if (_table.getAttribute('class').includes('none')) {
+      _table.classList.remove('none')
+    }
+    txt.value = textvalue
+    ninput.value = textvalue
+
+    artistsView.addEventListener('click', function (e) {
+      var target = e.target;
+      while (target !== artistsView) {
+        if (target.getAttribute('class') === 'cover-out' || target.nodeName.toLowerCase() === 'span') {
+          location.href = `pcartistsdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    albumsView.addEventListener('click', function (e) {
+      var target = e.target;
+
+      while (target !== albumsView) {
+        if (target.getAttribute('class') === 'cover_play' || target.getAttribute('class') === 'alname') {
+          location.href = `pcalbumdetail.html?id=${target.dataset.id}`
+          break
+        } else if (target.getAttribute('class') === 'al-arname') {
+          location.href = `pcartistsdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    tbody.addEventListener('click', function (e) {
+      var target = e.target;
+      while (target !== tbody) {
+        if (target.getAttribute('class') === 'songname') {
+          location.href = `pcsongdetail.html?id=${target.dataset.id}`
+          break
+        } else if (target.getAttribute('class') === 'artistsname') {
+          location.href = `pcartistsdetail.html?id=${target.dataset.id}`
+          break
+        } else if (target.getAttribute('class') === 'albumname') {
+          location.href = `pcalbumdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

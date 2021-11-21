@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <style>
+    body,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    code,
+    legend,
+    button form,
+    fieldset,
+    input,
+    textarea,
+    p,
+    blockquote,
+    th,
+    td {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: #222;
+      user-select: none;
+    }
+
+    /* 顶部 */
+    .m-header {
+      position: relative;
+      height: 44px;
+      text-align: center;
+      color: #ffcd32;
+      font-size: 0;
+    }
+
+    .m-header .icon {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 6px;
+      width: 30px;
+      height: 32px;
+      margin-right: 9px;
+    }
+
+    .m-header .text {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 44px;
+      font-size: 18px;
+    }
+
+    .m-header .mine {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .m-header .mine .icon-mine {
+      display: block;
+      padding: 12px;
+      font-size: 20px;
+      color: #ffcd32;
+    }
+
+    /* 导航条 */
+    .tab {
+      display: flex;
+      height: 44px;
+      line-height: 44px;
+      font-size: 14px;
+    }
+
+    .tab .tab-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .tab .tab-item .tab-link {
+      display: inline-block;
+      width: 100%;
+      padding-bottom: 5px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .tab .tab-item .tab-link-active {
+      color: #ffcd32;
+      border-bottom: 2px solid #ffcd32;
+    }
+
+    /* 推荐页面 */
+    .recommend {
+      top: 88px;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .recommend .recommend-content {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .song-list .list-title,
+    .album-list .list-title,
+    .recommend-list .list-title {
+      height: 65px;
+      line-height: 65px;
+      text-align: center;
+      font-size: 14px;
+      color: #ffcd32;
+    }
+.hot-lists .item,
+    .search-songs-list .item,
+    .song-list .item,
+    .album-list .item,
+    .recommend-list .item {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 20px 20px 20px;
+    }
+.hot-lists .item .icon,
+    .song-list .item .icon,
+    .album-list .item .icon,
+    .recommend-list .item .icon {
+      flex: 0 0 60px;
+      padding-right: 20px;
+      width: 60px;
+      height: 60px;
+    }
+
+    .hot-lists .item .text,
+    .search-songs-list .item .text,
+    .song-list .item .text,
+    .album-list .item .text,
+    .recommend-list .item .text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 20px;
+      font-size: 12px;
+      overflow: hidden;
+      margin-left: 15px;
+    }
+
+    .hot-lists .item .text .name,
+    .search-songs-list .item .text .name,
+    .song-list .item .text .name,
+    .album-list .item .text .name,
+    .recommend-list .item .text .name {
+      margin-bottom: 10px;
+      color: #ddd;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .hot-lists .item .text .desc,
+    .search-songs-list .item .text .desc,
+    .song-list .item .text .desc,
+    .album-list .item .text .desc,
+    .recommend-list .item .text .desc {
+      color: rgba(255, 255, 255, 0.3);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .search-songs-list {
+      margin: 20px 10px 10px !important;
+    }
+
+    .search-songs-list .name {
+      font-size: 16px;
+    }
+
+    /* Slider */
+
+    .slider * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .slider {
+      overflow: hidden;
+      width: 100%;
+      height: inherit;
+      position: relative;
+    }
+
+    .slider .slider-item-list {
+      height: inherit;
+      overflow: hidden;
+      position: relative;
+      transition: left 1s;
+      transition-duration: 1.5s;
+      left: 0;
+    }
+
+    .slider .slider-item {
+      display: block;
+      height: inherit;
+      float: left;
+    }
+
+    .slider .slider-item .img {
+      display: flex;
+      width: 100%;
+      height: inherit;
+      background-size: 100%;
+      background-position: 50% 40%;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-repeat: no-repeat;
+    }
+
+    .slider .slider-item .slider-item-title {
+      display: flex;
+      color: #ffffff;
+      font-size: 24px;
+      padding: 30px 48px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, .3));
+    }
+
+    .slider .slider-dots-wrap {
+      z-index: 99;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      bottom: 2px;
+    }
+
+    .slider .slider-dots-wrap .slider-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: rgba(204, 204, 204, 0.8);
+      margin: 6px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    .slider .slider-dots-wrap .slider-dot:hover {
+      background-color: #cdcdcd;
+    }
+
+    .slider .slider-dots-wrap .slider-dot.slider-dot-selected {
+      background-color: #B72712;
+    }
+
+    .slider .slider-arrow {
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 50px;
+      position: absolute;
+      top: 50%;
+      margin-top: -32px;
+      z-index: 100;
+      height: 64px;
+      width: 40px;
+      cursor: pointer;
+      background-size: 40px 64px;
+      background-repeat: no-repeat;
+    }
+
+    .slider .slider-arrow:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .slider .slider-arrows-wrap {
+      opacity: 0;
+      transition: all .2s ease;
+    }
+
+    .slider:hover .slider-arrows-wrap {
+      opacity: 1;
+    }
+
+    .slider .slider-arrow.slider-arrow-right {
+      background-image: url("../../img/slider/right.png");
+      right: 0;
+    }
+
+    .slider .slider-arrow.slider-arrow-left {
+      background-image: url("../../img/slider/left.png");
+      left: 0;
+    }
+
+    .container-sm {
+      width: 100%;
+      height: 168px;
+    }
+
+    /* 不渲染 */
+    .none {
+      display: none !important;
+    }
+
+    /* 歌手页面 */
+    .listview {
+      position: relative;
+      top: 10px;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #222;
+    }
+
+    .list-group-items {
+      display: flex;
+      align-items: center;
+      padding: 20px 0 0 30px;
+    }
+
+    .list-group-items .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .list-group-items .name {
+      margin-left: 20px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+
+    .listview .list-fixed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .listview .list-fixed .fixed-title {
+      height: 30px;
+      line-height: 30px;
+      padding-left: 20px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      background: #333;
+    }
+
+    .list-search-artist,
+    .list-artists,
+    .list-artist {
+      margin-top: 20px;
+    }
+
+    /* 排行页面 */
+    .rank {
+      width: 100%;
+      top: 88px;
+      bottom: 0;
+    }
+
+    .rank .toplist {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .rank .toplist .rankul .item {
+      display: flex;
+      margin: 0 20px 15px;
+      padding-top: 20px;
+      height: 100px;
+    }
+
+    .toplist .item:last-child {
+      padding-bottom: 20px;
+    }
+
+    .toplist .rankul .item .icon {
+      position: relative;
+      flex: 0 0 100px;
+      width: 100px;
+      height: 100px;
+    }
+
+    .toplist .item .songlist {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 20px;
+      height: 100px;
+      overflow: hidden;
+      background: #333;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 12px;
+    }
+
+    .item .songlist .song {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      line-height: 26px;
+    }
+
+    .toplist .rankul .item img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .toplist .item .over {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      left: 0;
+      top: 0;
+      color: #eee;
+      font-size: 28px;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, .3);
+    }
+
+    .item .over span {
+      position: absolute;
+      margin: auto;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 60px;
+      height: 40px;
+    }
+
+    /* 搜索 */
+    .search .search-box-wrapper {
+      margin: 20px;
+    }
+
+    .search .search-box-wrapper .shortcut-wrapper {
+      position: fixed;
+      top: 178px;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 6px;
+      height: 50px;
+      background: #333;
+      border-radius: 6px;
+    }
+
+    .search-box .glyphicon-search {
+      font-size: 20px;
+      color: #222;
+    }
+
+    .search-box .box {
+      flex: 1;
+      margin: 0 5px;
+      line-height: 26px;
+      background: #333;
+      color: #fff;
+      font-size: 16px;
+      border: none !important;
+    }
+
+    .search-box input {
+      outline: none;
+    }
+
+    .search-box .box::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .search-box .icon-dismiss {
+      font-size: 22px;
+      color: #222;
+    }
+
+    .glyphicon-remove {
+      font-size: 20px;
+      color: #222;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 顶部 -->
+  <div class="m-header">
+    <div class="icon"></div>
+    <h1 class="text">LFY Music</h1>
+    <div class="icon-mine"></div>
+  </div>
+  <!-- 导航栏 -->
+  <div class="tab">
+    <!-- default tag="a" -->
+    <div class="tab-item">
+      <span class="tab-link tab-recommend tab-link-active">推荐</span>
+    </div>
+    <div class="tab-item">
+      <span class="tab-link tab-artist">歌手</span>
+    </div>
+    <div class="tab-item">
+      <span class="tab-link tab-rank">排行</span>
+    </div>
+    <div class="tab-item">
+      <span class="tab-link tab-search">搜索</span>
+    </div>
+  </div>
+  <!-- 推荐页面 -->
+  <div class="recommend">
+    <div class="recommend-content">
+      <div>
+        <!-- 轮播图 -->
+        <div class="container-sm slider-top-wrap">
+          <div class="slider">
+            <div class="slider-item-list"></div>
+            <div class="slider-dots">
+              <div class="slider-dots-top-wrap"></div>
+            </div>
+            <div class="slider-arrows">
+              <div class="slider-arrows-top-wrap">
+                <span class="slider-arrow slider-arrow-left" onclick="hBSlider.turn(-1)"></span>
+                <span class="slider-arrow slider-arrow-right" onclick="hBSlider.turn(1)"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="recommend-list">
+          <h1 class="list-title">热门歌单推荐</h1>
+          <ul class="hot-list">
+          </ul>
+        </div>
+        <div class="album-list">
+          <h1 class="list-title">最新专辑</h1>
+          <ul class="newalbum-list">
+          </ul>
+        </div>
+        <div class="song-list">
+          <h1 class="list-title">最新歌曲</h1>
+          <ul class="newsong-list">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 歌手页面 -->
+  <div class="listview artist none">
+    <!-- 歌手列表 -->
+    <ul class="list-artist">
+    </ul>
+    <div class="list-fixed">
+      <h2 class="fixed-title">热门歌手</h2>
+    </div>
+  </div>
+
+  <!-- 排行页面 -->
+  <div class="rank none">
+    <div class="toplist">
+      <ul class="rankul">
+
+
+        <!-- <li class="item HuaYu">
+          <div class="icon">
+            <img />
+            <div class="over">
+              <span></span>
+            </div>
+          </div>
+          <ul class="songlist">
+          </ul>
+        </li>
+
+ 
+        <li class="item OuMei">
+          <div class="icon">
+            <img />
+            <div class="over">
+              <span>欧美</span>
+            </div>
+          </div>
+          <ul class="songlist">
+          </ul>
+        </li>
+
+       
+        <li class="item HanYu">
+          <div class="icon">
+            <img />
+            <div class="over">
+              <span>韩语</span>
+            </div>
+          </div>
+          <ul class="songlist">
+          </ul>
+        </li>
+
+     
+        <li class="item RiYu">
+          <div class="icon">
+            <img />
+            <div class="over">
+              <span>日语</span>
+            </div>
+          </div>
+          <ul class="songlist">
+          </ul>
+        </li> -->
+
+      </ul>
+      <ul class="list-artists"></ul>
+      <ul class="hot-lists"></ul>
+    </div>
+  </div>
+
+  <!-- 搜索 -->
+  <div class="search none">
+    <div class="search-box-wrapper">
+      <!-- @query="onQueryChange" -->
+
+      <div class="search-box">
+        <!-- 输入框前面的搜索图标 -->
+        <span class="glyphicon glyphicon-search"></span>
+        <!-- v-model="query"
+      -->
+        <input class="box" placeholder="音乐/歌手/专辑/歌单" />
+        <!-- v-show="query" @click="clear" -->
+        <!-- 输入框后面的"×"图标，
+     1. v-show="query"：当输入框有内容的时候才显示图标，
+     2. @click="clear"：当点击时候，输入框清空
+     -->
+        <span class="glyphicon glyphicon-remove none"></span>
+      </div>
+
+    </div>
+    <div class="shortcut-wrapper">
+      <ul class="list-search-artist"></ul>
+      <ul class="search-songs-list"></ul>
+    </div>
+  </div>
+
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/hBSlider.js"></script>
+  <script>
+    var hotList = document.querySelector('.hot-list')
+    var hotLists = document.querySelector('.hot-lists')
+    var newalbumList = document.querySelector('.newalbum-list')
+    var newsongList = document.querySelector('.newsong-list')
+    var searchSongsList = document.querySelector('.search-songs-list')
+    var tab = document.querySelector('.tab')
+    var tabLinkActive = document.querySelector('.tab-link-active')
+    var recommend = document.querySelector('.recommend')
+    var artist = document.querySelector('.artist')
+    var listArtist = document.querySelector('.list-artist')
+    var listArtists = document.querySelector('.list-artists')
+    var listSearchArtist = document.querySelector('.list-search-artist')
+    var rank = document.querySelector('.rank')
+    // var HuaYuRank = document.querySelector('.toplist .HuaYu .songlist')
+    // var HuaYuImg = document.querySelector('.HuaYu img')
+    // var HuaYu = document.querySelector('.HuaYu')
+    // var OuMeiRank = document.querySelector('.toplist .OuMei .songlist')
+    // var OuMeiImg = document.querySelector('.OuMei img')
+    // var OuMei = document.querySelector('.OuMei')
+    // var HanYuRank = document.querySelector('.toplist .HanYu .songlist')
+    // var HanYuImg = document.querySelector('.HanYu img')
+    // var HanYu = document.querySelector('.HanYu')
+    // var RiYuRank = document.querySelector('.toplist .RiYu .songlist')
+    // var RiYuImg = document.querySelector('.RiYu img')
+    // var RiYu = document.querySelector('.RiYu')
+    var rankul = document.querySelector('.rankul')
+    var search = document.querySelector('.search')
+    var searchBox = document.querySelector('.search-box')
+    var box = document.querySelector('.box')
+    var remove = document.querySelector('.glyphicon-remove')
+
+    var strsongid = ''
+    var textvalue = ''
+    var sliderData = []
+    var placeholder = '音乐/歌手/专辑/歌单'
+    tab.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== tab) {
+        if (target.getAttribute('class').includes('tab-recommend') && tabLinkActive !== target) {
+          tabLinkActive.classList.remove('tab-link-active')
+          target.classList.add('tab-link-active')
+          tabLinkActive = target
+          artist.classList.add('none')
+          rank.classList.add('none')
+          search.classList.add('none')
+          recommend.classList.remove('none')
+
+          break
+        } else if (target.getAttribute('class').includes('tab-artist') && tabLinkActive !== target) {
+          tabLinkActive.classList.remove('tab-link-active')
+          target.classList.add('tab-link-active')
+          tabLinkActive = target
+          recommend.classList.add('none')
+          rank.classList.add('none')
+          search.classList.add('none')
+          artist.classList.remove('none')
+            ; (async function main() {
+              const res = await axios({
+                url: `http:localhost:3000/top/artists?limit=20`,
+                withCredentials: true, //关键
+                method: 'post',
+              })
+              listArtist.innerHTML = ''
+              let data = res.data.artists
+              for (let x of data) {
+                str = ''
+                str += `<li class="list-group-items" data-id="${x.id}">
+                    <img class="avatar" src="${x.picUrl}?param=50y50"/>
+                    <span class="name">${x.name}</span>
+                  </li>`
+                listArtist.innerHTML += str
+              }
+            }
+            )()
+          break
+        } else if (target.getAttribute('class').includes('tab-rank') && tabLinkActive !== target) {
+          tabLinkActive.classList.remove('tab-link-active')
+          target.classList.add('tab-link-active')
+          tabLinkActive = target
+          artist.classList.add('none')
+          recommend.classList.add('none')
+          search.classList.add('none')
+          rank.classList.remove('none')
+          rankul.classList.remove('none')
+          hotLists.innerHTML = ''
+          // listArtists.innerHTML = ''
+
+            // // 华语
+            // ; (async function main() {
+            //   const res = await axios({
+            //     url: `http://localhost:3000/toplist/artist?type=1`,
+            //     withCredentials: true, //关键
+            //     method: 'post',
+            //   })
+            //   HuaYuRank.innerHTML = ''
+            //   let data = res.data.list.artists
+            //   HuaYuImg.setAttribute('src', `${data[0].picUrl}?param=100y100`)
+            //   HuaYu.setAttribute('data-id', 1)
+            //   let num = 0
+            //   for (let x of data) {
+            //     num++
+            //     str = ''
+            //     str += `<li class="song">
+            //         <span>${num}</span>
+            //         <span>${x.name}</span>
+            //       </li>`
+            //     HuaYuRank.innerHTML += str
+            //     if (num == 3) {
+            //       break
+            //     }
+            //   }
+            // }
+            // )()
+
+            // // 欧美
+            // ; (async function main() {
+            //   const res = await axios({
+            //     url: `http://localhost:3000/toplist/artist?type=2`,
+            //     withCredentials: true, //关键
+            //     method: 'post',
+            //   })
+            //   OuMeiRank.innerHTML = ''
+            //   let data = res.data.list.artists
+            //   OuMeiImg.setAttribute('src', `${data[0].picUrl}?param=100y100`)
+            //   OuMei.setAttribute('data-id', 2)
+            //   let num = 0
+            //   for (let x of data) {
+            //     num++
+            //     str = ''
+            //     str += `<li class="song">
+            //         <span>${num}</span>
+            //         <span>${x.name}</span>
+            //       </li>`
+            //     OuMeiRank.innerHTML += str
+            //     if (num == 3) {
+            //       break
+            //     }
+            //   }
+            // }
+            // )()
+
+            // // 韩语
+            // ; (async function main() {
+            //   const res = await axios({
+            //     url: `http://localhost:3000/toplist/artist?type=3`,
+            //     withCredentials: true, //关键
+            //     method: 'post',
+            //   })
+            //   HanYuRank.innerHTML = ''
+            //   let data = res.data.list.artists
+            //   HanYuImg.setAttribute('src', `${data[0].picUrl}?param=100y100`)
+            //   HanYu.setAttribute('data-id', 3)
+            //   let num = 0
+            //   for (let x of data) {
+            //     num++
+            //     str = ''
+            //     str += `<li class="song">
+            //         <span>${num}</span>
+            //         <span>${x.name}</span>
+            //       </li>`
+            //     HanYuRank.innerHTML += str
+            //     if (num == 3) {
+            //       break
+            //     }
+            //   }
+            // }
+            // )()
+
+            // // 日语
+            // ; (async function main() {
+            //   const res = await axios({
+            //     url: `http://localhost:3000/toplist/artist?type=4`,
+            //     withCredentials: true, //关键
+            //     method: 'post',
+            //   })
+            //   RiYuRank.innerHTML = ''
+            //   let data = res.data.list.artists
+            //   RiYuImg.setAttribute('src', `${data[0].picUrl}?param=100y100`)
+            //   RiYu.setAttribute('data-id', 4)
+            //   let num = 0
+            //   for (let x of data) {
+            //     num++
+            //     str = ''
+            //     str += `<li class="song">
+            //         <span>${num}</span>
+            //         <span>${x.name}</span>
+            //       </li>`
+            //     RiYuRank.innerHTML += str
+            //     if (num == 3) {
+            //       break
+            //     }
+            //   }
+            // }
+            // )()
+
+            ; (async function main() {
+              const res = await axios({
+                url: `http://localhost:3000/toplist`,
+                withCredentials: true, //关键
+                method: 'post',
+              })
+              rankul.innerHTML = ''
+              let data = res.data.list
+              let num = 0
+              for (let x of data) {
+                if (num === 0 || num === 1 || num === 2 || num === 3 || num === 11 || num === 12 || num === 13 || num === 26 || num === 28 || num === 29) {
+
+                  // ; (async function main() {
+                    const res = await axios({
+                      url: `http://localhost:3000/playlist/detail?id=${x.id}`,
+                      withCredentials: true, //关键
+                      method: 'post',
+                    })
+                    let data = res.data
+                    songid = ''
+                    songnum = 0
+                    for (let y of data.privileges) {
+                      songnum++
+                      songid += `${y.id},`
+                      if(songnum === 3){
+                        break
+                      }
+                    }
+                    songid = songid.substring(0, songid.length - 1)
+                    console.log(songid);
+                      ; (async function main() {
+                        const res = await axios({
+                          url: `http://localhost:3000/song/detail?ids=${songid}`,
+                          withCredentials: true, //关键
+                          method: 'post',
+                        })
+                        let data = res.data.songs
+                        let znum = 0
+                        str = ''
+                        str += `<li class="item" data-id=${x.id}>
+                            <div class="icon">
+                              <img src="${x.coverImgUrl}?param=100y100"/>
+                              <div class="over">
+                              </div>
+                            </div>
+                            <ul class="songlist">
+                            `
+                        for (let z of data) {
+                          znum++
+                          arname = ''
+                          for (let zz of z.ar) {
+                            arname += `<span class="artistsname">${zz.name}</span> /`
+                          }
+                          arname = arname.substring(0, arname.length - 1)
+
+                          str += `<li class="song">
+                                      <span>${znum}</span>
+                                      <span>${z.name}-${arname}</span>
+                                    </li>`
+                          if (znum === 3) {
+                            break
+                          }
+                        }
+                        str += `
+                                </ul>
+                                </li>`
+
+                        rankul.innerHTML += str
+                      })()
+
+                  // })()
+                }
+
+
+
+                num++
+              }
+
+
+            }
+            )()
+
+          break
+        } else if (target.getAttribute('class').includes('tab-search') && tabLinkActive !== target) {
+          tabLinkActive.classList.remove('tab-link-active')
+          target.classList.add('tab-link-active')
+          tabLinkActive = target
+          artist.classList.add('none')
+          rank.classList.add('none')
+          recommend.classList.add('none')
+          search.classList.remove('none')
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    hotList.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== hotList) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          location.href = `mbplaylistdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    newalbumList.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== newalbumList) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          location.href = `mbalbumdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    newsongList.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== newsongList) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          location.href = `mbsongdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    listArtist.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== listArtist) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          location.href = `mbartistsdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    // listArtists.addEventListener('click', function (e) {
+    //   var target = e.target
+    //   while (target !== listArtists) {
+    //     if (target.nodeName.toLowerCase() === 'li') {
+    //       location.href = `mbartistsdetail.html?id=${target.dataset.id}`
+    //       break
+    //     }
+    //     target = target.parentNode
+    //   }
+    // })
+
+    // rankul.addEventListener('click', function (e) {
+    //   var target = e.target
+    //   while (target !== listArtist) {
+    //     if (target.getAttribute('class') && target.getAttribute('class').includes('item')) {
+
+    //       ; (async function main() {
+    //         const res = await axios({
+    //           url: `http://localhost:3000/toplist/artist?type=${target.dataset.id}`,
+    //           withCredentials: true, //关键
+    //           method: 'post',
+    //         })
+    //         listArtists.innerHTML = ''
+    //         rankul.classList.add('none')
+    //         let data = res.data.list.artists
+    //         num = 0
+    //         for (let x of data) {
+    //           num++
+    //           str = ''
+    //           str += `<li class="list-group-items" data-id="${x.id}">
+    //                 <img class="avatar" src="${x.picUrl}?param=50y50"/>
+    //                 <span class="name">${x.name}</span>
+    //               </li>`
+    //           listArtists.innerHTML += str
+    //           if (num == 20) {
+    //             break
+    //           }
+    //         }
+    //       }
+    //       )()
+
+    //       break
+    //     }
+    //     target = target.parentNode
+    //   }
+    // })
+
+    hotLists.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== hotLists) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          location.href = `mbsongdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    rankul.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== listArtist) {
+        if (target.getAttribute('class') && target.getAttribute('class').includes('item')) {
+          ; (async function main() {
+            const res = await axios({
+              url: `http://localhost:3000/playlist/detail?id=${target.dataset.id}`,
+              withCredentials: true, //关键
+              method: 'post',
+            })
+            hotLists.innerHTML = ''
+            rankul.classList.add('none')
+            strsongid = ''
+            let data = res.data.privileges
+            for (let x of data) {
+              strsongid += `${x.id},`
+            }
+            strsongid = strsongid.substring(0, strsongid.length - 1)
+              ; (async function main() {
+                const res = await axios({
+                  url: `http://localhost:3000/song/detail?ids=${strsongid}`,
+                  withCredentials: true, //关键
+                  method: 'post',
+                })
+                let data = res.data.songs
+                for (let x of data) {
+                  str = ''
+
+                  name = ''
+                for (let y of x.ar) {
+                  name += `<span class="artistsname">${y.name}</span> /`
+                }
+                name = name.substring(0, name.length - 1)
+
+                  str += `<li class="item" data-id="${x.id}">
+                    <div class="icon">
+                      <img src="${x.al.picUrl}?param=60y60">
+                    </div>
+                    <div class="text">
+                      <p class="name">${x.name}</p>
+                      <p class="desc">${name}</p>
+                    </div>
+                  </li>`
+                  hotLists.innerHTML += str
+                }
+              })()
+          }
+          )()
+
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    searchBox.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== searchBox) {
+        if (target.getAttribute('class').includes('box')) {
+          box.setAttribute('placeholder', '')
+          box.focus()
+          break
+        } else if (target.getAttribute('class').includes('glyphicon-remove')) {
+          box.value = ''
+          remove.classList.add('none')
+          box.setAttribute('placeholder', placeholder)
+        }
+        target = target.parentNode
+      }
+    })
+
+    box.addEventListener('input', function (e) {
+      if (box.value.length !== 0) {
+        remove.classList.remove('none')
+      } else {
+        remove.classList.add('none')
+      }
+    })
+
+    box.addEventListener('keyup', function (e) {
+      if (e.keyCode == 13) {
+        if (box.value !== textvalue && box.value !== '') {
+          box.blur()
+          listSearchArtist.innerHTML = ''
+          searchSongsList.innerHTML = ''
+            ; (async function main() {
+              const res = await axios({
+                url: `http:localhost:3000/search?keywords=${box.value}&type=100&limit=1`,
+                withCredentials: true, //关键
+                method: 'post',
+              })
+
+              let data = res.data.result.artists
+              str = ''
+              str += `<li class="list-group-items" data-id="${data[0].id}">
+                    <img class="avatar" src="${data[0].picUrl}?param=50y50"/>
+                    <span class="name">${data[0].name}</span>
+                  </li>`
+              listSearchArtist.innerHTML += str
+            }
+            )()
+
+            ; (async function main() {
+              const res = await axios({
+                url: `http:localhost:3000/search?keywords=${box.value}&type=1&limit=9`,
+                withCredentials: true, //关键
+                method: 'post',
+              })
+              let data = res.data.result.songs
+
+              for (let x of data) {
+                str = ''
+
+                name = ''
+                for (let y of x.artists) {
+                  name += `<span class="artistsname">${y.name}</span> /`
+                }
+                name = name.substring(0, name.length - 1)
+
+                str += `<li class="item" data-id="${x.id}">
+                          <div class="text">
+                            <p class="name">${x.name}</p>
+                            <p class="desc">${name}</p>
+                          </div>
+                        </li>`
+                searchSongsList.innerHTML += str
+              }
+            }
+            )()
+        }
+        textvalue = box.value
+      }
+
+    })
+
+    listSearchArtist.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== listSearchArtist) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          location.href = `mbartistsdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    searchSongsList.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== listArtists) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          location.href = `mbsongdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+
+    document.addEventListener("mousedown", function (e) {
+      var target = e.target
+      if (target.nodeName.toLowerCase() !== "input" && box.value === '') {
+        box.setAttribute('placeholder', placeholder)
+      }
+    }, false);
+
+    ; (async function main() {
+      const res = await axios({
+        url: `http:localhost:3000/banner`,
+        withCredentials: true, //关键
+        method: 'post',
+      })
+      let data = res.data.banners
+      for (let x of data) {
+        obj = {}
+        obj.picUrl = `${x.imageUrl}?param=500y168`
+        switch (x.targetType) {
+          case 1:
+            obj.typeId = `mbsongdetail.html?id=${x.targetId}`
+            break
+          case 10:
+            obj.typeId = `mbalbumdetail.html?id=${x.targetId}`
+            break
+          case 100:
+            obj.typeId = `mbartistsdetail.html?id=${target.dataset.id}`
+            break
+        }
+        sliderData.push(obj)
+      }
+      //在获得数据后对轮播图进行初始化
+      ; (async function () {
+        hBSlider.setConfig({
+          autoPlay: true,
+          delay: 5
+        });
+        hBSlider.setItems(sliderData);
+        hBSlider.init();
+        hBSlider.play();
+      })()
+    }
+    )()
+
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http:localhost:3000/personalized?limit=8`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+        let data = res.data.result
+        for (let x of data) {
+          str = ''
+          str += `<li class="item" data-id="${x.id}">
+                    <div class="icon">
+                      <img src="${x.picUrl}?param=60y60">
+                    </div>
+                    <div class="text">
+                      <p class="name">${x.name}</p>
+                      <p class="desc">${x.playCount}次播放</p>
+                    </div>
+                  </li>`
+          hotList.innerHTML += str
+        }
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http:localhost:3000/album/newest`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+
+        let data = res.data.albums
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          name = ''
+          for (let y of x.artists) {
+            name += `<span class="artistsname">${y.name}</span> /`
+          }
+          name = name.substring(0, name.length - 1)
+          str += `<li class="item" data-id="${x.id}">
+                    <div class="icon">
+                      <img src="${x.blurPicUrl}?param=60y60" >
+                    </div>
+                    <div class="text">
+                      <p class="name">${x.name}</p>
+                      <p class="desc">${name}</p>
+                    </div>
+                  </li>`
+          newalbumList.innerHTML += str
+          if (num == 5) {
+            break
+          }
+        }
+      }
+      )()
+      ; (async function main() {
+        const res = await axios({
+          url: `http://localhost:3000/personalized/newsong`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+        let data = res.data.result
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          name = ''
+          for (let y of x.song.artists) {
+            name += `<span class="artistsname">${y.name}</span> /`
+          }
+          name = name.substring(0, name.length - 1)
+          str += `<li class="item" data-id="${x.id}">
+                    <div class="icon">
+                      <img src="${x.picUrl}?param=60y60">
+                    </div>
+                    <div class="text">
+                      <p class="name">${x.name}</p>
+                      <p class="desc">${name}</p>
+                    </div>
+                  </li>`
+          newsongList.innerHTML += str
+          if (num == 5) {
+            break
+          }
+        }
+      }
+      )()
+
+  </script>
+</body>
+
+</html>

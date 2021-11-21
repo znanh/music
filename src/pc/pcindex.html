@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <style>
+    body,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    code,
+    legend,
+    button form,
+    fieldset,
+    input,
+    textarea,
+    p,
+    blockquote,
+    th,
+    td {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: #F5F5F5;
+      user-select: none;
+    }
+
+    .tbar {
+      width: 100%;
+      z-index: 99;
+      zoom: 1;
+    }
+
+    .tbar-top {
+      position: relative;
+      z-index: 1000;
+      height: 70px;
+      box-sizing: border-box;
+      background: #fdfdfd;
+      border-bottom: 1px solid #000;
+    }
+
+    .tbar-top .top-wrap {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    .top-cb:after {
+      clear: both;
+      content: '.';
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+
+    .tbar-top .logo {
+      float: left;
+      width: 176px;
+      height: 69px;
+      background-position: 0 0;
+    }
+
+    .tbar-top .logo a {
+      float: left;
+      width: 157px;
+      height: 100%;
+      padding-right: 20px;
+      text-indent: -9999px;
+    }
+
+    [hidefocus] {
+      outline: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .m-nav {
+      float: left;
+      border-right: none;
+      list-style: none;
+      margin: 0;
+    }
+
+    .m-nav li {
+      float: left;
+      height: 68px;
+      font-size: 14px;
+      position: relative;
+      background-position: right -300px;
+      color: rgb(0, 0, 0);
+      border-bottom-color: transparent;
+      line-height: 68px;
+      margin: 0;
+      border-bottom: 2px solid transparent;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .menuitem:hover {
+      /* background-color: #000000; */
+      color: #B72712;
+      cursor: pointer;
+      /*hover变小手*/
+    }
+
+    .isactived {
+      /* background-color: #000000 !important; */
+      color: #B72712 !important;
+      border-bottom-color: #B72712 !important;
+    }
+
+    .tbar-tophead {
+      float: right;
+      height: 45px;
+      margin: 19px 0 0 20px;
+      padding: 0 22px 0 0;
+      background-position: right -47px;
+      background-image: none;
+    }
+
+    .tbar-tophead .link,
+    .tbar-tophead .link:hover {
+      display: block;
+      width: 28px;
+      margin-top: 7px;
+      color: #787878;
+      font-size: 12px;
+    }
+
+    .tbar-tophead:hover .link {
+      color: #999;
+    }
+
+    .mbar-srch,
+    .mbar-srch .srchbg {
+      float: right;
+      width: 158px;
+      height: 32px;
+    }
+
+    .mbar-srch .srchbg {
+      border: solid 2px #c4c7ce;
+    }
+
+    .mbar-srch .srchbg {
+      margin-top: 19px;
+      background-position: 0 -99px;
+      background-color: #fff;
+      border-radius: 32px;
+    }
+
+    .mbar-srch,
+    .mbar-srch .srchbg {
+      float: right;
+      width: 158px;
+      height: 32px;
+    }
+
+    .mbar-srch .parent {
+      display: block;
+      position: relative;
+      margin: 8px 0 0 30px;
+    }
+
+    .mbar-srch .parent input {
+      color: #333;
+      line-height: 16px;
+      opacity: 1;
+    }
+
+    .mbar-srch .parent input {
+      position: relative;
+      width: 95%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    img,
+    .txt {
+      border: 0;
+    }
+
+    input {
+      outline-color: transparent;
+    }
+
+    .mbar-srch .parent label {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 90%;
+      color: #9b9b9b;
+      cursor: text;
+      font-size: 12px;
+      font-weight: 100
+    }
+
+    .mbar-srch .parent input {
+      font-size: 12px;
+    }
+
+    .mbar-srch .u-showoff {
+      position: absolute;
+      top: 108px;
+      left: 16px;
+      width: 180px;
+      height: 40px;
+      line-height: 40px;
+      background-color: #fe5555;
+      color: #fff;
+      text-align: center;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    .f-hide,
+    .js-hide {
+      display: none !important;
+    }
+
+    .none {
+      display: none !important;
+    }
+
+    .mbar-subnav {
+      z-index: 90;
+      height: 35px;
+      box-sizing: border-box;
+      background-color: #c4c7ce;
+    }
+
+    .mbar-subnav .top-wrap {
+      position: relative;
+      width: 900px;
+      height: 34px;
+      margin: 0 auto;
+    }
+
+    .fbar-pr {
+      position: relative;
+      zoom: 1;
+    }
+
+    .mbar-subnav .anav {
+      position: absolute;
+      float: left;
+      padding-left: 180px;
+    }
+
+    .mbar-subnav .anav li,
+    .mbar-subnav .anav a {
+      float: left;
+      height: 34px;
+      text-align: center;
+    }
+
+    li,
+    s {
+      list-style: none;
+    }
+
+    .mbar-subnav .anav a:hover,
+    .mbar-subnav .anav a.anavact {
+      color: #000;
+      text-decoration: none;
+    }
+
+    .mbar-subnav .anav li,
+    .mbar-subnav .anav a {
+      float: left;
+      height: 34px;
+      text-align: center;
+    }
+
+    [hidefocus] {
+      outline: none;
+    }
+
+    a,
+    a *,
+    .f-hand,
+    .f-hand * {
+      cursor: pointer;
+    }
+
+    .mbar-subnav .anav a:hover em,
+    .mbar-subnav .anav a.anavact em {
+      background: #fdfdfd;
+    }
+
+    .mbar-subnav .anav a em {
+      display: inline-block;
+      height: 20px;
+      padding: 0 13px;
+      margin: 7px 17px 0 0;
+      border-radius: 20px;
+      line-height: 21px;
+    }
+
+    em,
+    i {
+      font-style: normal;
+      text-align: left;
+      font-size: inherit;
+    }
+
+    /* Slider */
+
+    .slider-top-wrap {
+      width: 980px;
+      padding: 0;
+      box-shadow: 0 1px 38px rgba(0, 0, 0, .08);
+      overflow: hidden;
+      margin-top: 30px;
+      height: 324px;
+      border-radius: 8px;
+    }
+
+    .slider * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .slider {
+      overflow: hidden;
+      width: 100%;
+      height: inherit;
+      position: relative;
+    }
+
+    .slider .slider-item-list {
+      height: inherit;
+      overflow: hidden;
+      position: relative;
+      transition: left 1s;
+      transition-duration: 1.5s;
+      left: 0;
+    }
+
+    .slider .slider-item {
+      display: block;
+      float: left;
+    }
+
+    .slider .slider-item .img {
+      display: flex;
+      width: 980px;
+      height: 324px;
+      background-size: 100%;
+      background-position: 50% 40%;
+      flex-direction: column;
+      justify-content: flex-end;
+
+    }
+
+    .slider .slider-item .slider-item-title {
+      display: flex;
+      color: #ffffff;
+      font-size: 24px;
+      padding: 30px 48px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, .3));
+    }
+
+    .slider .slider-dots-wrap {
+      z-index: 99;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      bottom: 2px;
+    }
+
+    .slider .slider-dots-wrap .slider-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: rgba(204, 204, 204, 0.8);
+      margin: 6px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    .slider .slider-dots-wrap .slider-dot:hover {
+      background-color: #cdcdcd;
+    }
+
+    .slider .slider-dots-wrap .slider-dot.slider-dot-selected {
+      background-color: #B72712;
+    }
+
+    .slider .slider-arrow {
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 50px;
+      position: absolute;
+      top: 50%;
+      margin-top: -32px;
+      z-index: 100;
+      height: 64px;
+      width: 40px;
+      cursor: pointer;
+      background-size: 40px 64px;
+      background-repeat: no-repeat;
+    }
+
+    .slider .slider-arrow:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .slider .slider-arrows-top-wrap {
+      opacity: 0;
+      /* transition: all .2s ease; */
+    }
+
+    .slider:hover .slider-arrows-top-wrap {
+      opacity: 1;
+    }
+
+    .slider .slider-arrow.slider-arrow-right {
+      background-image: url("../../img/slider/right.png");
+      right: 0;
+    }
+
+    .slider .slider-arrow.slider-arrow-left {
+      background-image: url("../../img/slider/left.png");
+      left: 0;
+    }
+
+    .slider-top-wrap {
+      margin: 30px auto 0;
+    }
+
+    /* Common */
+
+    body {
+      background: #f8f8f8;
+      font-size: 1em;
+      line-height: 1.625em;
+      font-family: 'Lora', 'Microsoft Yahei', Arial, Helvetica, sans-serif;
+    }
+
+    p img {
+      max-width: 100%;
+      display: block;
+      margin: 10px 0;
+    }
+
+    a {
+      color: #232323;
+    }
+
+    a:hover {
+      color: #B72712;
+    }
+
+    .clearfix {
+      overflow: auto;
+      zoom: 1;
+    }
+
+    .clearfix :after {
+      clear: both;
+      content: '.';
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+
+    .red {
+      color: #B72712;
+    }
+
+    h2 .fa {
+      padding-right: 8px;
+    }
+
+    .container,
+    .container-sm {
+      margin-right: auto;
+      margin-left: auto;
+      transition: width .5s linear;
+    }
+
+    .container {
+      width: 1080px;
+    }
+
+    .container-sm {
+      width: 980px;
+    }
+
+    .row {
+      overflow: auto;
+    }
+
+    /* Header */
+
+    header {
+      background: #fdfdfd;
+      height: 65px;
+      box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.07);
+      border-bottom: none;
+      overflow: hidden;
+    }
+
+    /* Nav */
+
+    .navbar-header,
+    .navbar-nav {
+      float: left;
+      line-height: 65px;
+    }
+
+    .navbar-right {
+      float: right;
+    }
+
+    .navbar-brand {
+      display: block;
+      padding: 0 1em;
+    }
+
+    .navbar-brand img {
+      width: 49px;
+      height: 34px;
+      margin-right: 0.625em;
+      vertical-align: middle;
+    }
+
+    .navbar-nav>li {
+      position: relative;
+      float: left;
+      font-size: 10px;
+      letter-spacing: 0;
+      font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+    }
+
+    .navbar-nav li {
+      overflow: hidden;
+      height: 65px;
+    }
+
+    .navbar-nav>li>a {
+      padding: 0 1.3em;
+      height: 100%;
+      display: block;
+      font-size: 14px;
+      color: #232323;
+      letter-spacing: 1px;
+      transition: height .2s ease-out;
+      border-bottom: 2px solid #B72712;
+    }
+
+    .navbar-nav>li:hover>a {
+      color: #B72712;
+      opacity: 1;
+      height: 63px;
+    }
+
+    .navbar-nav .active a {
+      color: #B72712;
+      height: 63px;
+    }
+
+    .nav .search-input {
+      padding: 4px 14px;
+      outline: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 50px;
+    }
+
+    .navbar-sm>li>a {
+      border: none;
+    }
+
+    /* Box */
+
+    .box {
+      background: #fff;
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      margin-top: 29px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, .14);
+      box-shadow: 0 3px 8px -3px rgba(0, 0, 0, .08);
+      box-sizing: border-box;
+    }
+
+    /* Main */
+
+    .main,
+    .sidebar {}
+
+    .main {
+      width: 100%;
+      float: left;
+      margin-right: -250px;
+      box-sizing: border-box;
+    }
+
+    .main-top-wrap {
+      margin-right: 250px;
+    }
+
+    .content-box {
+      padding: 20px 30px 30px;
+    }
+
+    .content-header {
+      overflow: hidden;
+      height: 34px;
+      padding: 0 10px;
+      background-position: -225px -156px;
+      border-bottom: 2px solid #C10D0C;
+      line-height: 28px;
+    }
+
+    .content-header h2 {
+      float: left;
+      font-size: 18px;
+      color: #333;
+      font-weight: 400;
+    }
+
+    .content-header .tab {
+      float: left;
+      font-size: 12px;
+      margin-left: 20px;
+    }
+
+    .content-header a {
+      color: #666;
+      transition: color .1s ease-in-out;
+    }
+
+    .content-header .tab a:hover {
+      color: #000;
+    }
+
+    .content-header .tab .line {
+      margin: 0 10px;
+      color: #ccc;
+    }
+
+    .content-header .more {
+      font-size: 12px;
+      float: right;
+    }
+
+    /* Music List */
+
+    .music-list {
+      margin: 20px 0 0 -36px;
+    }
+
+    .music-list li {
+      float: left;
+      display: inline-block;
+      overflow: hidden;
+      line-height: 1.4;
+      width: 25%;
+      height: 224px;
+      padding-left: 36px;
+      font-size: 14px;
+      transition: color .1s ease-in-out;
+    }
+
+    .music-list li .u-cover {
+      width: 140px;
+      height: 140px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .music-list li .u-cover img {
+      width: 140px;
+      height: 140px;
+      transform: scale(1);
+      transition: transform .75s;
+    }
+
+    .music-list li .u-cover:hover img {
+      transform: scale(1.07);
+      transition: all .75s cubic-bezier(0, 1, .75, 1);
+    }
+
+    .music-list li .u-cover .msk {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .3);
+    }
+
+    .music-list li .u-cover:hover .msk {
+      display: block;
+    }
+
+    .music-list li .dec {
+      margin: 8px 0 3px;
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .music-list li .author {
+      color: #999;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 22px;
+    }
+
+    .music-list li .author a {
+      color: #999;
+    }
+
+    .music-list li .author a:hover {
+      color: #B72712;
+    }
+
+    /* Sidebar */
+
+    .sidebar {
+      width: 250px;
+      float: right;
+      box-sizing: border-box;
+      border-left: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .sidebar h4 {
+      margin: 0;
+      height: 55px;
+      overflow: hidden;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      ;
+      background: #f5f5f5;
+      font-size: 16px;
+      color: #757575;
+      line-height: 60px;
+      padding-left: 31px;
+      font-weight: 400;
+      -webkit-box-shadow: 0 1px 1px 1px #F6F6F6;
+      -moz-box-shadow: 0 1px 1px 1px #F6F6F6;
+      box-shadow: 0 1px 1px 1px #F6F6F6;
+      background-image: -moz-linear-gradient(top, #fafafa, #f4f4f4);
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#f4f4f4));
+    }
+
+    .sidebar .right-module {
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .sidebar .right-module:first-child h4 {
+      border-top: none;
+    }
+
+    /* Artist Song */
+
+    .artist-song:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border-top: 1px solid #f2f2f2;
+      border-top: 1px solid rgba(0, 0, 0, .1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .artist-song:first-child:before {
+      border-top: none;
+    }
+
+    .artist-song {
+      position: relative;
+      padding: 16px 14px;
+      list-style: none;
+      color: #737373;
+      overflow: hidden;
+    }
+
+    .artist-song:hover {
+      box-shadow: 0 0 38px rgba(0, 0, 0, .08) inset;
+      -webkit-transition: all .15s ease;
+      transition: all .15s ease;
+    }
+
+    .artist-song h3 {
+      color: #737373;
+    }
+
+    .artist-song .cover-link {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 4;
+    }
+
+    .artist-song .avatar {
+      float: left;
+      width: 48px;
+      height: 48px;
+    }
+
+    .artist-song .avatar img {
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      overflow: hidden;
+      line-height: 48px;
+      text-align: center;
+    }
+
+    .artist-song .info {
+      margin-left: 62px;
+    }
+
+    .artist-song .info h3 {
+      display: block;
+      margin: 0;
+      line-height: 28px;
+      font-weight: 400;
+      font-size: 14px;
+      color: #424242;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .artist-song .info p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 20px;
+      color: #B2B2B2;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 29px;
+      background: #fcfcfc;
+      border-top: 1px solid #e6e6e6;
+      color: #757575;
+      padding: 20px 0;
+      font-size: 0.6875em;
+    }
+
+    footer .copyright p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #757575;
+    }
+
+    /* Category Music List */
+
+    .category .row {
+      margin-left: -20px;
+    }
+
+    .category-music-list {
+      float: left;
+      width: 324px;
+      margin: 20px 0 0 20px;
+      background: #fff;
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, .14);
+      box-sizing: border-box;
+    }
+
+    .category-music-list .category-header {
+      border-bottom: 1px solid rgba(0, 0, 0, .14);
+      background-color: #fafafa;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 20px;
+      box-sizing: border-box;
+      font-size: 18px;
+      letter-spacing: 1px;
+      background-image: -webkit-linear-gradient(top, #fff, #fafafa);
+      background-image: linear-gradient(180deg, #fff, #fafafa);
+      color: #666;
+    }
+
+    .category-music-list ul {
+      font-size: 14px;
+      font-weight: 400;
+      color: #737373;
+    }
+
+    .category-music-list .music-list-item {
+      padding: 0 12px;
+      height: 36px;
+      line-height: 36px;
+      position: relative;
+      color: #737373;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+
+    .category-music-list .music-list-item:hover {
+      box-shadow: 0 0 30px rgba(0, 0, 0, .08) inset;
+      -webkit-transition: all .15s ease;
+      transition: all .15s ease;
+    }
+
+    .category-music-list .music-list-item:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border-top: 1px solid #f2f2f2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .category-music-list .music-list-item:first-child:before {
+      border: none;
+    }
+
+    .category-music-list .music-list-item .title {
+      float: left;
+      margin-right: -68px;
+      width: 100%;
+    }
+
+    .category-music-list .music-list-item .title_top-wrap {
+      margin-right: 68px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .category-music-list .music-list-item .title .rank {
+      padding-right: 4px;
+      color: #B2B2B2;
+      font-weight: normal;
+    }
+
+    .category-music-list .music-list-item .info {
+      float: right;
+      font-size: 12px;
+      overflow: hidden;
+      color: #B2B2B2;
+    }
+
+    .category-music-list .music-list-item .info span {
+      margin-right: 6px;
+    }
+
+    .category-music-list .music-list-item .info span:last-child {
+      margin-right: 0;
+    }
+
+    .category-music-list .music-list-item .info .date {
+      vertical-align: middle;
+    }
+
+    .category-music-list .music-list-item .info .avatar {
+      width: 20px;
+    }
+
+    .category-music-list .music-list-item .info .avatar img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+
+    /* Article */
+
+    .article .title {
+      border-left: 3px solid #B72712;
+      padding-left: 14px;
+      margin: 10px 0 20px;
+    }
+
+    .article .title h2 {
+      color: #333;
+      font-size: 22px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .article .title .info {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .article .content p {
+      font-size: 14px;
+      line-height: 26px;
+      margin: 0 0 14px;
+      word-break: break-all;
+      color: rgb(102, 102, 102);
+    }
+
+    .hotname {
+      font-size: 14px;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hotname:hover {
+      text-decoration: underline;
+    }
+
+    .artist-song p {
+      position: absolute;
+      margin-left: 62px;
+    }
+
+    /* 列表全小手 */
+    .new-artist-songs img,
+    .new-artist-songs h3,
+    .new-artist-songs span {
+      cursor: pointer;
+    }
+
+    .new-songs img,
+    .new-songs h3,
+    .new-songs span {
+      cursor: pointer;
+    }
+
+    .category a,
+    .category img {
+      cursor: pointer;
+    }
+
+    /* 搜索建议 */
+    .m-srch .suggest {
+      clear: both;
+      top: 59px;
+      width: 240px;
+    }
+
+    .suggest {
+      position: absolute;
+      z-index: 120;
+      top: 52px;
+      left: 0;
+      width: 238px;
+      box-sizing: border-box;
+      border: 1px solid #bebebe;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 4px 7px #555;
+      text-shadow: 0 1px 0 rgb(255 255 255 / 90%);
+    }
+
+    .sug-list .hd {
+      float: left;
+      width: 62px;
+      margin-right: -100px;
+      padding: 10px 0 0 10px;
+      border-right: 1px solid #e2e2e2;
+      line-height: 17px;
+      font-weight: normal;
+      font-size: 12px;
+    }
+
+    .sug-list .hd .icn {
+      float: left;
+      margin: 2px 4px 0 0;
+    }
+
+    .u-icn-26,
+    .u-icn-27,
+    .u-icn-28,
+    .u-icn-29 {
+      width: 14px;
+      height: 15px;
+      background-position: -35px -300px;
+    }
+
+    .u-icn,
+    .u-icn2,
+    .u-icn3 {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+
+    em,
+    i {
+      font-style: normal;
+      text-align: left;
+      font-size: inherit;
+    }
+
+    .fl {
+      float: left;
+    }
+
+    .sug-list ul {
+      margin-left: 61px;
+      margin-top: -1px;
+      padding: 6px 0 5px;
+      border-top: 1px solid #e2e2e2;
+      border-left: 1px solid #e2e2e2;
+    }
+
+    .sug-list li {
+      width: 100%;
+      list-style: none;
+    }
+
+    .sug-list li a {
+      display: block;
+      width: 100%;
+      text-indent: 12px;
+      line-height: 24px;
+    }
+
+    .over {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <div class="tbar">
+    <div class="tbar-top">
+      <div class="top-wrap top-cb ">
+        <h1 class="logo"><a hidefocus="true" href="#"></a></h1>
+        <ul class='m-nav'>
+          <li class='menuitem isactived home'>音乐首页</li>
+          <!-- <li class='menuitem'>我的音乐</li>
+          <li class='menuitem'>占位</li>
+          <li class='menuitem'>占位</li> -->
+        </ul>
+        <div class="tbar-tophead">
+          <a hidefocus="true" href="#" class="link" data-action="login">登录</a>
+        </div>
+        <div class="mbar-srch fbar-pr">
+          <div class="srchbg">
+            <span class="parent">
+              <input type="text" name="srch" id="srch" class="txt" value="" style="opacity: 1;">
+              <label class="ph">音乐/歌手/专辑/歌单</label>
+            </span>
+          </div>
+
+          <div class="suggest none">
+            <div class="sug-list">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mbar-subnav">
+      <div class="top-wrap fbar-pr">
+        <ul class="anav">
+          <li>
+            <a hidefocus="true" data-module="recommend" href="#" class="anavact">
+              <em>推荐</em>
+            </a>
+          </li>
+          <li>
+            <a hidefocus="true" data-module="toplist" href="#" class="">
+              <em>排行榜</em>
+            </a>
+          </li>
+          <li>
+            <a hidefocus="true" data-module="playlist" href="#" class="">
+              <em>歌单</em>
+            </a>
+          </li>
+          <li>
+            <a hidefocus="true" data-module="artist" href="#" class="">
+              <em>歌手</em>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div>
+
+
+
+  </div>
+  <!-- 轮播图 -->
+  <div class="container-sm slider-top-wrap">
+    <div class="slider">
+      <div class="slider-item-list"></div>
+      <div class="slider-dots">
+        <div class="slider-dots-wrap"></div>
+      </div>
+      <div class="slider-arrows">
+        <div class="slider-arrows-top-wrap">
+          <span class="slider-arrow slider-arrow-left" onclick="hBSlider.turn(-1)"></span>
+          <span class="slider-arrow slider-arrow-right" onclick="hBSlider.turn(1)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 主内容区域 -->
+  <div class="container-sm box">
+    <!-- 主内容 -->
+    <div class="main">
+      <div class="main-top-wrap">
+        <div class="content-box">
+          <!-- 热门推荐 -->
+          <div class="hot-recommand">
+            <div class="content-header">
+              <h2><i class="fa fa-music red"></i>热门推荐</h2>
+              <div class="tab">
+              </div>
+              <!--<span class="more"><a href="#">更多</a></span>-->
+            </div>
+            <ul class="music-list clearfix">
+            </ul>
+          </div>
+          <!-- 分类榜单 -->
+          <div class="category">
+            <div class="content-header">
+              <h2><i class="fa fa-music red"></i>分类榜单</h2>
+            </div>
+            <div class="row">
+              <div class="category-music-list">
+                <div class="category-header">
+                  华语歌手排行榜
+                </div>
+                <ul class="HuaYuArtists">
+                </ul>
+              </div>
+              <div class="category-music-list">
+                <div class="category-header">
+                  欧美歌手排行榜
+                </div>
+                <ul class="OuMeiArtists">
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="category-music-list">
+                <div class="category-header">
+                  韩语歌手排行榜
+                </div>
+                <ul class="HanYuArtists">
+                </ul>
+              </div>
+              <div class="category-music-list">
+                <div class="category-header">
+                  日语歌手排行榜
+                </div>
+                <ul class="RiYuArtists">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="sidebar" style="min-height: 1094px">
+      <div class="right-module">
+        <h4>最新专辑</h4>
+        <ul class="new-artist-songs">
+        </ul>
+      </div>
+      <div class="right-module">
+        <h4>最新歌曲</h4>
+        <ul class="new-songs">
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/hBSlider.js"></script>
+  <script>
+    var aul = document.querySelector('.m-nav')
+    var olde = document.querySelector('.menuitem')
+    var srch = document.querySelector('.mbar-srch')
+    var txt = document.querySelector('.mbar-srch .txt')
+    var ph = document.querySelector('.mbar-srch .ph')
+    var anav = document.querySelector('.anav')
+    var anavact = document.querySelector('.anavact')
+    var nav = document.querySelector('.nav')
+    var navActive = document.querySelector('.nav .active')
+    var clearfix = document.querySelector('.clearfix')
+    var newArtistSongs = document.querySelector('.new-artist-songs')
+    var newSongs = document.querySelector('.new-songs')
+    var HuaYuArtists = document.querySelector('.HuaYuArtists')
+    var OuMeiArtists = document.querySelector('.OuMeiArtists')
+    var HanYuArtists = document.querySelector('.HanYuArtists')
+    var RiYuArtists = document.querySelector('.RiYuArtists')
+    var home = document.querySelector('.home')
+    var hotRecommand = document.querySelector('.hot-recommand .tab')
+    var category = document.querySelector('.category')
+    var sugList = document.querySelector('.sug-list')
+    var suggest = document.querySelector('.suggest')
+
+    var textvalue = ''
+    var sliderData = []
+    var finish = true
+    home.addEventListener('click', function () {
+      location.href = `pcindex.html`
+    })
+    aul.addEventListener('click', function (e) {
+      var target = e.target;
+      while (target !== aul) {
+        if (target.nodeName.toLowerCase() === 'li') {
+          if (olde) {
+            olde.classList.remove('isactived')
+          }
+          target.classList.add('isactived')
+          olde = target
+          break
+        }
+        target = target.parentNode
+      }
+    })
+    srch.addEventListener('click', function (e) {
+      document.onclick = null
+      txt.focus()
+      ph.classList.add('none')
+    })
+    txt.addEventListener('keyup', function (e) {
+      if (e.keyCode == 13) {
+        if (txt.value !== textvalue && txt.value !== '') {
+          txt.blur();
+          location.href = `pcsearch.html?textvalue=${txt.value}`
+        }
+      }
+      if (txt.value.length !== 0) {
+        // sugList.innerHTML = ''
+        ; (async function main() {
+          const res = await axios({
+            url: `http://localhost:3000/search/suggest?keywords=${txt.value}`,
+            withCredentials: true, //关键
+            method: 'post',
+          })
+          sugList.innerHTML = ''
+          let data = res.data.result
+          if (data.order === undefined) {
+            suggest.classList.add('none')
+            return
+          }
+          suggest.classList.remove('none')
+          for (let x of data.order) {
+            str = ''
+            if (x === 'songs') {
+              str += `<div>
+                <h3 class="hd"><em class="fl">单曲</em></h3>
+                <ul>`
+              for (let y of data[x]) {
+                var name = ''
+                for (let z of y.artists) {
+                  name += `${z.name} `
+                }
+                name = name.substring(0, name.length - 1)
+                str += `<li><a class="over">${y.name}-<span>${name}</span>&nbsp;</a></li>`
+              }
+            } else if (x === 'artists') {
+              str += `<div>
+                <h3 class="hd"><em class="fl">歌手</em></h3>
+                <ul>`
+              for (let y of data[x]) {
+                str += `<li><a class="over"><span>${y.name}</span>&nbsp;</a></li>`
+              }
+            } else if (x === 'albums') {
+              str += `<div>
+                <h3 class="hd"><em class="fl">专辑</em></h3>
+                <ul>`
+              for (let y of data[x]) {
+                str += `<li><a class="over">${y.name}<span>${y.artist.name}</span>&nbsp;</a></li>`
+              }
+            } else if (x === 'playlists') {
+              str += `<div>
+                <h3 class="hd"><em class="fl">歌单</em></h3>
+                <ul>`
+              for (let y of data[x]) {
+                str += `<li><a class="over">${y.name}<span></span>&nbsp;</a></li>`
+              }
+            }
+            str += `
+                </ul>
+              </div>`
+            sugList.innerHTML += str
+          }
+        }
+        )()
+
+      } else {
+        suggest.classList.add('none')
+      }
+    })
+    document.addEventListener("mousedown", function (e) {
+      if (e.target.nodeName.toLowerCase() !== "input" && txt.value === '') {
+        ph.classList.remove('none')
+      }
+    }, false);
+    anav.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== anav) {
+        if (target.nodeName.toLowerCase() === 'a') {
+          anavact.classList.remove('anavact')
+          target.classList.add('anavact')
+          anavact = target
+          if (target.dataset.module === 'playlist') {
+            location.href = `pcplaylist.html?tag=全部`
+          } else if (target.dataset.module === 'toplist') {
+            location.href = `pcrank.html`
+          } else if (target.dataset.module === 'artist') {
+            location.href = `pcartistslist.html`
+          }
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    clearfix.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== clearfix) {
+        if (target.getAttribute('class').includes('msk') || target.getAttribute('class').includes('hotname')) {
+          location.href = `pcplaylistdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    newArtistSongs.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== newArtistSongs) {
+        if (target.nodeName.toLowerCase() === 'h3' || target.nodeName.toLowerCase() === 'img') {
+          location.href = `pcalbumdetail.html?id=${target.dataset.id}`
+          break
+        } else if (target.nodeName.toLowerCase() === 'span') {
+          location.href = `pcartistsdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    newSongs.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== newSongs) {
+        if (target.nodeName.toLowerCase() === 'h3' || target.nodeName.toLowerCase() === 'img') {
+          location.href = `pcsongdetail.html?id=${target.dataset.id}`
+          break
+        } else if (target.nodeName.toLowerCase() === 'span') {
+          location.href = `pcartistsdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    category.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== category) {
+        if (target.nodeName.toLowerCase() === 'a' || target.nodeName.toLowerCase() === 'img') {
+          location.href = `pcartistsdetail.html?id=${target.dataset.id}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+    hotRecommand.addEventListener('click', function (e) {
+      var target = e.target
+      while (target !== hotRecommand) {
+        if (target.nodeName.toLowerCase() === 'a') {
+          location.href = `pcplaylist.html?tag=${target.dataset.tag}`
+          break
+        }
+        target = target.parentNode
+      }
+    })
+
+      ; (async function main() {
+
+        if (txt.value !== '') {
+          ph.classList.add('none')
+        }
+        const res = await axios({
+          url: `http:localhost:3000/banner`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+        let data = res.data.banners
+        for (let x of data) {
+          obj = {}
+          obj.picUrl = `${x.imageUrl}?param=980y324`
+          switch (x.targetType) {
+            case 1:
+              obj.typeId = `pcsongdetail.html?id=${x.targetId}`
+              break
+            case 10:
+              obj.typeId = `pcalbumdetail.html?id=${x.targetId}`
+              break
+            case 100:
+              obj.typeId = `pcartistsdetail.html?id=${target.dataset.id}`
+              break
+          }
+          sliderData.push(obj)
+        }
+        //在获得数据后对轮播图进行初始化
+        ; (async function () {
+          hBSlider.setConfig({
+            autoPlay: true,
+            delay: 5
+          });
+          hBSlider.setItems(sliderData);
+          hBSlider.init();
+          hBSlider.play();
+        })()
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http:localhost:3000/personalized?limit=8`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+        let data = res.data.result
+        for (let x of data) {
+          str = ''
+          str += `
+          <li>
+              <div class="u-cover">
+                <img src="${x.picUrl}?param=140y140">
+                <a  href="#" class="msk" data-id="${x.id}"></a>
+              </div>
+              <div class="hotname" data-id="${x.id}">${x.name}</div>
+            </li>`
+          clearfix.innerHTML += str
+        }
+
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http:localhost:3000/album/newest`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+
+        let data = res.data.albums
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          name = ''
+          for (let y of x.artists) {
+            name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+          }
+          name = name.substring(0, name.length - 1)
+          str += `
+                  <li class="artist-song">
+                  <div class="avatar">
+                    <img src="${x.blurPicUrl}?param=48y48" data-id="${x.id}">
+                  </div>
+                  <div class="info">
+                    <h3 data-id="${x.id}">${x.name}</h3>
+                  </div>
+                  <p>${name}</p>
+                  <a href="#"></a>
+                </li>`
+          newArtistSongs.innerHTML += str
+          if (num == 5) {
+            break
+          }
+        }
+      }
+      )()
+      ; (async function main() {
+        const res = await axios({
+          url: `http://localhost:3000/personalized/newsong`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+        let data = res.data.result
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          name = ''
+          for (let y of x.song.artists) {
+            name += `<span class="artistsname" data-id="${y.id}">${y.name}</span> /`
+          }
+          name = name.substring(0, name.length - 1)
+          str += `
+          <li class="artist-song">
+          <div class="avatar">
+            <img src="${x.picUrl}?param=48y48" data-id="${x.id}">
+          </div>
+          <div class="info">
+            <h3 data-id="${x.id}">${x.name}</h3>
+          </div>
+          <p>${name}</p>
+          <a href="#"></a>
+        </li>`
+          newSongs.innerHTML += str
+          if (num == 7) {
+            break
+          }
+        }
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http://localhost:3000/toplist/artist?type=1`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+
+        let data = res.data.list.artists
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          str += `
+          <li class="music-list-item">
+                    <div class="title">
+                      <div class="title_top-wrap">
+                        <span class="rank">${num}</span>
+                        <a href="#" data-id="${x.id}">${x.name}</a>
+                      </div>
+                    </div>
+                    <div class="info">
+                      <span class="avatar"><img src="${x.img1v1Url}?param=20y20" data-id="${x.id}"></span>
+                    </div>
+                  </li>`
+          HuaYuArtists.innerHTML += str
+          if (num == 5) {
+            break
+          }
+        }
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http://localhost:3000/toplist/artist?type=2`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+
+        let data = res.data.list.artists
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          str += `
+          <li class="music-list-item">
+                    <div class="title">
+                      <div class="title_top-wrap">
+                        <span class="rank">${num}</span>
+                        <a href="#" data-id="${x.id}">${x.name}</a>
+                      </div>
+                    </div>
+                    <div class="info">
+                      <span class="avatar"><img src="${x.img1v1Url}?param=20y20" data-id="${x.id}"></span>
+                    </div>
+                  </li>`
+          OuMeiArtists.innerHTML += str
+          if (num == 5) {
+            break
+          }
+        }
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http://localhost:3000/toplist/artist?type=3`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+
+        let data = res.data.list.artists
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          str += `
+          <li class="music-list-item">
+                    <div class="title">
+                      <div class="title_top-wrap">
+                        <span class="rank">${num}</span>
+                        <a href="#" data-id="${x.id}">${x.name}</a>
+                      </div>
+                    </div>
+                    <div class="info">
+                      <span class="avatar"><img src="${x.img1v1Url}?param=20y20" data-id="${x.id}"></span>
+                    </div>
+                  </li>`
+          HanYuArtists.innerHTML += str
+          if (num == 5) {
+            break
+          }
+        }
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http://localhost:3000/toplist/artist?type=4`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+
+        let data = res.data.list.artists
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          str += `
+          <li class="music-list-item">
+                    <div class="title">
+                      <div class="title_top-wrap">
+                        <span class="rank">${num}</span>
+                        <a href="#" data-id="${x.id}">${x.name}</a>
+                      </div>
+                    </div>
+                    <div class="info">
+                      <span class="avatar"><img src="${x.img1v1Url}?param=20y20" data-id="${x.id}"></span>
+                    </div>
+                  </li>`
+          RiYuArtists.innerHTML += str
+          if (num == 5) {
+            break
+          }
+        }
+      }
+      )()
+
+      ; (async function main() {
+        const res = await axios({
+          url: `http://localhost:3000/playlist/hot`,
+          withCredentials: true, //关键
+          method: 'post',
+        })
+        let data = res.data.tags
+        let num = 0
+        for (let x of data) {
+          num++
+          str = ''
+          if (num !== 5) {
+            str += `<a href="#" data-tag="${x.name}">${x.name}</a>
+                <span class="line">|</span>`
+            hotRecommand.innerHTML += str
+          } else if (num === 5) {
+            str += `<a href="#" data-tag="${x.name}">${x.name}</a>`
+            hotRecommand.innerHTML += str
+            break
+          }
+
+        }
+      }
+      )()
+
+  </script>
+</body>
+
+</html>

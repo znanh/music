@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <style>
+    .player .normal-player {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 150;
+      background: #222;
+    }
+
+    .player .normal-player .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.6;
+      filter: blur(20px);
+    }
+
+    .normal-player .background img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .player .normal-player .top {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .normal-player .top .back {
+      position: absolute;
+      top: 0;
+      left: 6px;
+      z-index: 50;
+    }
+
+    .top .back .glyphicon {
+      display: block;
+      padding: 9px;
+      font-size: 22px;
+      color: #ffcd32;
+    }
+
+    .normal-player .top .title {
+      width: 70%;
+      margin: 0 auto;
+      line-height: 40px;
+      text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .normal-player .top .subtitle {
+      line-height: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .player .normal-player .middle {
+      position: fixed;
+      width: 100%;
+      height: 85%;
+      top: 80px;
+      bottom: 170px;
+      white-space: nowrap;
+      font-size: 0;
+    }
+
+    .normal-player .middle .middle-l {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 80%;
+    }
+
+    .middle .middle-l .cd-wrapper {
+      position: absolute;
+      left: 10%;
+      top: 0;
+      width: 80%;
+      height: 100%;
+    }
+
+    .middle-l .cd-wrapper .cd {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border: 10px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    /* cd旋转动画 */
+    .middle-l .cd-wrapper .cd.play {
+      animation: rotate 20s linear infinite;
+    }
+
+    .middle-l .cd-wrapper .cd.pause {
+      animation-play-state: paused;
+    }
+
+    .cd-wrapper .cd .image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .player .normal-player .bottom {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+    }
+
+    .normal-player .bottom .progress-wrapper {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      margin: 0px auto;
+      padding: 10px 0;
+    }
+
+    .bottom .progress-wrapper .time {
+      color: #fff;
+      font-size: 12px;
+      flex: 0 0 30px;
+      line-height: 30px;
+      width: 30px;
+    }
+
+    .progress-wrapper .time.time-l {
+      text-align: left;
+    }
+
+    .progress-wrapper .time.time-r {
+      text-align: right;
+    }
+
+    .bottom .progress-wrapper .progress-bar-wrapper {
+      position: relative;
+      flex: 1;
+      margin: 0 14px;
+    }
+
+    .normal-player .bottom .operators {
+      display: flex;
+      align-items: center;
+    }
+
+    .bottom .operators .icon {
+      flex: 1;
+      color: #ffcd32;
+    }
+
+    .operators .icon span {
+      font-size: 30px;
+    }
+
+    .bottom .operators .i-left {
+      text-align: right;
+    }
+
+    .bottom .operators .i-center {
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .operators .i-center span {
+      font-size: 40px;
+    }
+
+    .bottom .operators .i-right {
+      text-align: left;
+    }
+
+    /* 进度条 */
+    .progress-bar {
+      height: 30px;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    .progress-bar .bar-inner {
+      position: relative;
+      top: 13px;
+      height: 4px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+    }
+
+     .progress {
+      position: absolute;
+      height: 4px;
+      top: 13px;
+      background: #ffcd32;
+      border-radius: 20px;
+    }
+
+     .progress-btn-wrapper {
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 30px;
+      height: 30px;
+    }
+
+     .progress-btn-wrapper .progress-btn {
+      position: relative;
+      top: 7px;
+      left: 0px;
+      box-sizing: border-box;
+      width: 16px;
+      height: 16px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: #ffcd32;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="player">
+    <div name="normal"></div>
+    <div class="normal-player">
+      <!-- 1.首先一张背景图 -->
+      <div class="background">
+        <img />
+      </div>
+      <!-- 2.1头的部分，歌曲名，歌手名称 -->
+      <div class="top">
+        <!-- 2.1.1左上角有一个返回按钮 -->
+        <div class="back">
+          <span class="glyphicon glyphicon-menu-left"></span>
+        </div>
+        <!-- 2.1.2歌曲名 -->
+        <p class="title"></p>
+        <!-- 2.1.3歌手名 s-->
+        <p class="subtitle"></p>
+      </div>
+      <!-- 2.2中间部分有一个唱片，唱片中间有个图片 -->
+      <!-- 当CD和歌词左右滑动的时候，手指触发事件 -->
+      <div class="middle">
+        <div class="middle-l">
+          <div class="cd-wrapper">
+            <!-- 2.2.1唱片图片 -->
+            <div class="cd">
+              <img class="image"  />
+            </div>
+          </div>
+        </div>
+        <!-- 2.3底部的一个操作区，包含一个进度条 -->
+        <div class="bottom">
+          <div class="progress-wrapper">
+            <!-- 当前歌曲播放时长 -->
+            <span class="time time-l">00:00</span>
+            <div class="progress-bar-wrapper">
+              <!-- 进度条组件 -->
+              <!-- 用onProgressBarChange来接受子组件传来的函数percentChange -->
+
+              <div class="progress-bar">
+                <!-- bar-inner：表示总长度 -->
+                <div class="bar-inner">
+                  
+                </div>
+              </div>
+
+<!-- progress：表示走过的部分 -->
+                  <div class="progress"></div>
+                  <!-- progress-btn-wrapper：表示当前的位置 -->
+                  <div class="progress-btn-wrapper">
+                    <!-- progress-btn：当前位置的那个按钮 -->
+                    <div class="progress-btn"></div>
+                  </div>
+
+            </div>
+            <!-- 当前歌曲总时长 -->
+            <span class="time time-r"></span>
+          </div>
+          <div class="operators">
+            <div class="icon i-left">
+              <span class="glyphicon glyphicon-step-backward"></span>
+            </div>
+            <!-- 设置歌曲播放或者暂停 -->
+            <div class="icon i-center">
+              <span class="glyphicon glyphicon-play"></span>
+            </div>
+            <div class="icon i-right">
+              <span class="glyphicon glyphicon-step-forward"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 播放歌曲 -->
+      <!-- audio会派发事件
+    play：当歌曲能播放时候触发该事件
+    error：当歌曲播放出错时候会触发这个事件
+    timeupdate="updateTime":歌曲播放的时候会派发一个事件
+    ended="end": 歌曲播放结束了会派发一个事件
+     -->
+      <audio></audio>
+    </div>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script type="text/javascript" src="../../js/getUrlParam.js"></script>
+    <script>
+      var bgimg = document.querySelector('.background img')
+      var songname = document.querySelector('.top .title')
+      var arname = document.querySelector('.top .subtitle')
+      var cd = document.querySelector('.cd')
+      var cdimg = document.querySelector('.cd img')
+      var audio = document.querySelector('audio')
+      var operators = document.querySelector('.operators')
+      var toggle = document.querySelector('.i-center span')
+      var time = document.querySelector('.time-r')
+      var currentTime = document.querySelector('.time-l')
+      var progressBar = document.querySelector('.progress-bar')
+      var progress = document.querySelector('.progress')
+      var progressBtnWrapper = document.querySelector('.progress-btn-wrapper')
+      var back = document.querySelector('.back')
+
+      var id = UrlParm.parm("id");
+      var duration = 0
+      var currduration = 0
+      operators.addEventListener('click', function (e) {
+        var target = e.target
+        while (target !== operators) {
+          if (target.getAttribute('class').includes('glyphicon-play')) {
+            audio.play()
+            toggle.classList.remove('glyphicon-play')
+            toggle.classList.add('glyphicon-pause')
+            cd.classList.remove('pause')
+            cd.classList.add('play')
+            break
+          } else if (target.getAttribute('class').includes('glyphicon-pause')) {
+            audio.pause()
+            toggle.classList.remove('glyphicon-pause')
+            toggle.classList.add('glyphicon-play')
+            cd.classList.add('pause')
+            break
+          }
+          target = target.parentNode
+        }
+      })
+
+      audio.addEventListener('canplay', function (e) {
+        var target = e.target
+        let seconds = Math.floor(target.duration)
+        duration = seconds
+        let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+        seconds -= 60 * min;
+        let sec = seconds >= 10 ? seconds : '0' + seconds;
+
+        time.innerHTML = `${min} : ${sec}`
+      })
+
+      audio.addEventListener('timeupdate', function (e) {
+        var target = e.target
+        let seconds = Math.floor(target.currentTime)
+        currduration = seconds
+        let min = Math.floor(seconds / 60) >= 10 ? Math.floor(seconds / 60) : '0' + Math.floor(seconds / 60);
+        seconds -= 60 * min;
+        let sec = seconds >= 10 ? seconds : '0' + seconds;
+        percent = Math.round(currduration / duration * 100) + '%'
+        progress.style.width = `${percent}`
+        var p = (currduration / duration) * progressBar.clientWidth
+        progressBtnWrapper.style.transform = `translate(${p}px)`
+        currentTime.innerHTML = `${min}:${sec}`
+      })
+
+      audio.addEventListener('progress', function (e) {
+        var target = e.target
+        // var timeRanges = audio.buffered
+        // var timeBuffered = timeRanges.end(timeRanges.length - 1)
+        // if(timeBuffered === target.duration){
+        // }
+        var buffered, percent;
+        // 已缓冲部分
+        buffered = audio.buffered.end(0)
+        // 已缓冲百分百
+        percent = Math.round(buffered / audio.duration * 100) + '%'
+        progressBar.style.width = `${percent}`
+      })
+
+      audio.addEventListener('ended', function (e) {
+        var target = e.target
+        toggle.classList.remove('glyphicon-pause')
+        toggle.classList.add('glyphicon-play')
+        cd.classList.add('pause')
+      })
+
+      back.addEventListener('click',function(e){
+      var target = e.target
+      while (target !== back) {
+        if (target.nodeName.toLowerCase() === 'span') {
+            history.back()
+            break
+        }
+        target = target.parentNode
+      }
+    })
+
+
+        ; (async function main() {
+          const res = await axios({
+            url: `http://localhost:3000/song/detail?ids=${id}`,
+            withCredentials: true, //关键
+            method: 'post',
+          })
+          picUrl = res.data.songs[0].al.picUrl
+          songsname = res.data.songs[0].name
+          allname = ''
+          for (let y of res.data.songs[0].ar) {
+            allname += y.name + '/'
+          }
+          allname = allname.substring(0, allname.length - 1)
+          songname.innerHTML += `${songsname}`
+          arname.innerHTML += `${allname}`
+          bgimg.setAttribute('src', `${picUrl}?param=328y328`)
+          cdimg.setAttribute('src', `${picUrl}?param=328y328`)
+
+            ; (async function main() {
+              const res = await axios({
+                url: `http://localhost:3000/song/url?id=${id}`,
+                withCredentials: true, //关键
+                method: 'post',
+              })
+              data = res.data.data[0].url
+              audio.src = data
+            }
+            )()
+        }
+        )()
+    </script>
+</body>
+
+</html>
